@@ -9,6 +9,6 @@ public class IndexController {
     @RequestMapping("/")
     public String welcome(Model model) {
         //model.addAttribute("text", "This is text");
-        return "index";
+        return "HomePage";
     }
 }
