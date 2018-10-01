@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Discord Admin Tool</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    <link href="../static/css/main.css" rel="stylesheet" />
+    <link href="../static/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+        <%- include("./topnavbar.ejs") %>
+
+        <div class="page-header text-center">
+            <h1>All users</h1>
+            <% if (users.length == 0) { %>
+            <strong>You dont have permission to view this page!</strong><br>
+            <% } else { %>
+                <% if (stats.numOfUsers) { %>
+                <strong>Total number of users: </strong><%= stats.numOfUsers %><br>
+                <% } %>
+            <% } %>
+        </div>
+
+        <% for (var i=0; i < users.length; i++) { %>
+            <div class="row">
+
+                <!-- LOCAL INFORMATION -->
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="well">
+                                <h3><span class="fa fa-user"></span> Local</h3>
+
+                                <p>
+                                    <strong>id</strong>: <%= users[i]._id %><br>
+                                    <strong>username</strong>: <%= users[i].local.username %><br>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="well">
+                                <h3><span class="fa fa-gears"></span> Add servers</h3>
+
+                                    <div class="control-group">
+                                        <form action="/add-guild-access" method="post" class="dat-servaccess-form">
+                                            <select name="guild">
+                                                <% servers.forEach(function (server) { %>
+                                                    <option value="<%= server.id %>"><%= server.name %> (<%= server.id %>)</option>
+                                                <% }); %>  
+                                            </select>
+                                            <select name="level">
+                                                <option value="0" selected="selected">0 - Access</option>
+                                                <option value="1">1 - Mod</option>
+                                                <option value="2">2 - Admin</option>
+                                                <option value="3">3 - Owner</option>
+                                            </select>
+                                            <input type="hidden" value="<%= users[i]._id %>" name="userId" />
+                                            <input class="dat-servaccess-button" type="submit" value="Add">
+                                        </form>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FACEBOOK INFORMATION -->
+                <div class="col-sm-6">
+                    <div class="well">
+                        <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+                        <p>
+                            <strong>id</strong>: asd<br>
+                            <strong>token</strong>: asd<br>
+                            <strong>email</strong>: asd<br>
+                            <strong>name</strong>: asd<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <script src="../static/js/adminajaxhandler.js"></script>
+</body>
+</html>
