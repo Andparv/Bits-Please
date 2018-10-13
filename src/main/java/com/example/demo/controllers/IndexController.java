@@ -32,7 +32,5 @@ public class IndexController {
     public String map(){
         return "map";
     }
-
-
 }
 
