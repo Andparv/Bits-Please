@@ -5,12 +5,12 @@ html, body {
     width:100%;
     font-family: 'Poppins', sans-serif;
     color: #b98847;
-    background-color: black;
+    background-color: white;
 }
 
 .navbar {
     padding: .8rem;
-    background-color: black;
+    background-color: white;
    
 }
 .navbar-nav li {
@@ -35,7 +35,7 @@ html, body {
 }
 
 footer {
-    background-color: black;
+    background-color: white;
     color: #b98847;
     padding-top: 2rem;
 }
@@ -46,10 +46,10 @@ footer {
         margin-bottom: 1rem;
     }
 .footer-map:hover{
-    color: black;
+    color: white;
 }
 .nav-link:hover {
-    color: black;
+    color: white;
 }
 
 hr.light {

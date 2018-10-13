@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 
 
-<html lang="en">
+<html lang="en" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,7 @@
 <!-- Navigation -->
     <nav class="navbar navbar-expand-md sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="img/BitsLogo.png" /></a>
+            <a class="navbar-brand" href="HomePage.jsp"><img src="img/BitsLogo.png" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <img src="img/navbarIcon.png" />
             </button>
@@ -36,10 +36,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Cart</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Log in</a>
-                    </li>
-                </ul>
+
+                        <form:form method = "GET" action = "/homepage/redirectlogin">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type = "submit" value = ""/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form:form>
+
+                </ul><?xml version="1.0" encoding="UTF-8"?>
+
             </div>
         </div>
     </nav>
@@ -121,10 +130,9 @@
                     <hr class="light" />
                     <h5>Additional information</h5>
                     <hr class="light" />
-                    <a class="footer-map" href="Map.html">Map</a>
-                    
 
                 </div>
+
                 <div class="col-12">
                     <hr class="light-100" />
                     <h5>&copy; bitsphones.com</h5>
