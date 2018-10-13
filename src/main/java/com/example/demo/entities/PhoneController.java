@@ -4,6 +4,7 @@ import com.example.demo.repository.PhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,6 +19,7 @@ public class PhoneController {
                 Phone phone = new Phone();
                 phone.setManifacturer("Apple");
                 phone.setModel("Xs");
+                phone.setImageAadress(null);
                 PhoneRepository.save(phone);
                 return ResponseEntity.ok().build();
 

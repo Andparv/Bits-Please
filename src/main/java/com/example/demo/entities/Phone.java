@@ -24,9 +24,9 @@ public class Phone {
         this.model = model;
     }
 
-    private String imageAadress;
-    private String manifacturer;
-    private String model;
+    public String imageAadress;
+    public String manifacturer;
+    public String model;
 
 
 
