@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Bits-Please",
+    "\\doc",
+    "\\Frontend",
+    "\\gradle",
     "\\src",
     "\\src\\main",
     "\\src\\main\\java",
     "\\src\\main\\resources",
-    "\\src\\main\\resources\\static",
-    "\\src\\main\\resources\\templates",
-    "\\src\\test",
-    "\\static",
-    "\\static\\css"
+    "\\src\\main\\resources\\static"
   ],
-  "SelectedNode": "\\src\\main\\resources\\templates\\HomePage.html",
+  "SelectedNode": "\\src\\main\\resources\\static\\css",
   "PreviewInSolutionExplorer": false
 }
