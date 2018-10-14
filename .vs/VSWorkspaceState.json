@@ -1,21 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Frontend\\img",
-    "\\gradle",
-    "\\gradle\\wrapper",
     "\\src",
     "\\src\\main",
     "\\src\\main\\java",
     "\\src\\main\\java\\com",
     "\\src\\main\\java\\com\\example",
     "\\src\\main\\java\\com\\example\\demo",
-    "\\src\\main\\java\\com\\example\\demo\\controllers",
     "\\src\\main\\java\\com\\example\\demo\\entities",
-    "\\src\\main\\java\\com\\example\\demo\\repository",
-    "\\static",
-    "\\static\\js"
+    "\\src\\main\\resources",
+    "\\static"
   ],
-  "SelectedNode": "\\static\\js\\Alfajquery.js",
+  "SelectedNode": "\\src\\main\\java\\com\\example\\demo\\entities\\UserDAO.java",
   "PreviewInSolutionExplorer": false
 }
