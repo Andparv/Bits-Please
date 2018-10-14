@@ -18,6 +18,7 @@ html, body {
 }
 
 
+
 .nav-link {
       color: #b98847;
     font-size: 1.1em !important;
@@ -65,9 +66,6 @@ hr.light-100 {
     margin-bottom: 1rem;
 }
 
-.Search {
-    display: none;
-}
 
 
 
