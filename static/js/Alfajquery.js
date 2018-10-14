@@ -5,3 +5,4 @@ $(window).load(function () {
         return '<img width="100" height="100" alt="" src="http://www.gravatar.com/avatar.php?size=100&gravatar_id=' + hash + '">'
     })
 })
+
