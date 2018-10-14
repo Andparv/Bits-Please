@@ -36,19 +36,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Cart</a>
                     </li>
-
-                        <form:form method = "GET" action = "/homepage/redirectlogin">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <input type = "submit" value = ""/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form:form>
-
-                </ul><?xml version="1.0" encoding="UTF-8"?>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="/loginsystem/register">Login</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -130,6 +121,7 @@
                     <hr class="light" />
                     <h5>Additional information</h5>
                     <hr class="light" />
+                    <a class=" footer-map" href="map">Map</a>
 
                 </div>
 
@@ -140,7 +132,6 @@
         </div>
         </div>
     </footer>
-
 
 </body>
 </html>

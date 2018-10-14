@@ -18,6 +18,7 @@ public class IndexController {
         public String redirectlogin() {
             return "redirect:login";
     }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
         public String login(){
             return "login";

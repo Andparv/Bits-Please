@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <html>
 <head>
     <title>Registration</title>
@@ -11,21 +10,26 @@
     <script type="text/javascript" src="js/registration.js"></script>
 </head>
 <body>
+<header>
+    <nav>
 <div class="container">
-    <div class="main">
-        <form class="form" method="post" action="#">
+    <div class="main-wrapper">
+        <form class="form" method="form" action="#">
             <h2>Registration</h2>
             <label>Name :</label>
-            <input type="text" name="dname" id="name">
+            <input type="text" name="name" id="name" placeholder="Your name">
             <label>Email :</label>
-            <input type="text" name="demail" id="email">
+            <input type="text" name="e-mail" id="email" placeholder="E-mail">
             <label>Password :</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="pw" id="pw" placeholder="Password">
             <label>Confirm Password :</label>
-            <input type="password" name="cpassword" id="cpassword">
-            <input type="button" name="register" id="register" value="Register">
+            <input type="password" name="cpw" id="cpw" placeholder="Confirm password">
+            <button type="submit" name="register" id="register" value="Register"></button>
         </form>
+
     </div>
 </div>
+    </nav>
+</header>
 </body>
 </html>

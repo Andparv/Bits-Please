@@ -127,6 +127,18 @@ figure {
     padding: 1rem;
 }
 
+/*signup.php*/
+
+.signup-form{
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+.signup-form input {
+    background-color: black;
+
+}
+
 
 
 
