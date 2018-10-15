@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
+<link>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BitsPhones</title>
@@ -10,10 +10,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/static/js/popup.js"></script>
+    <script src="/loginsystem/register.php"></script>
+    <script src="/loginsystem/includes"></script>
     <link href="/static/css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/static/css/base.css">
     <link rel="stylesheet" type="text/css" href="/static/css/popup.css">
+
     <style>
 
         .search-bar {
@@ -55,7 +59,6 @@
             </div>
         </div>
 
-
         <div id="popup-content">
             <h2>Log in</h2>
             <div>
@@ -65,8 +68,7 @@
                 <input id="loginbutton" type="button" value="Log in" />
             </div>
             <div>
-                
-                <input id="register-button" type="button" value="Not registred? Sign up!">
+                <input id="register-button" type="button" value="Not registred? Sign up!" href="/loginsystem/register">
             </div>
             <div>
                 <input id="modal-close-button" type="button" value="Close" />

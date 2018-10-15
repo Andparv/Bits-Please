@@ -5,10 +5,6 @@ $(document).ready(function(){
 		console.log('$("#login-button").click');
 		openPopup();
 	});
-	$("#register-button").click(function (e) {
-		console.log('$("#register-button").click');
-		window.opener.location.href = "/loginsystem/register.php";
-    });
 	$("#modal-close-button").click(function(e) {
 		console.log('$("#modal-close-button").click');
 		closePopup();
