@@ -7,20 +7,29 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 
-    private String username;
+
+    private String firstname;
+    private String lastname;
     private String email;
     private String password;
 
-    public String getUsername() {
-        return username;
+    public String getFirstname(){
+        return firstname;
+    }
+    public void setFirstname(){
+        this.firstname = firstname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPassword() {

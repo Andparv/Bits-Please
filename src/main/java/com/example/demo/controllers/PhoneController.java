@@ -1,7 +1,9 @@
-package com.example.demo.entities;
+package com.example.demo.controllers;
 
+import com.example.demo.entities.Phone;
 import com.example.demo.repository.PhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class PhoneController {
 
+    @Qualifier("phoneRepository")
     @Autowired
     private PhoneRepository PhoneRepository;
 
