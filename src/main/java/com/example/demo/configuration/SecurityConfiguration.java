@@ -26,11 +26,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     private DataSource dataSource;
 
     private final String USERS_QUERY = "select email, password from user where email=?";
+    private final String ROLES_QUERY = "select u.email, r.role from user u inner join user_role ur on (u.id=ur.user_id) inner join role r on (ur.role_id=r.role_id) where u.email=?";
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication()
                 .usersByUsernameQuery(USERS_QUERY)
+                .authoritiesByUsernameQuery(ROLES_QUERY)
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
     }
@@ -41,7 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signup").permitAll()
-                .antMatchers("/home/**").hasAnyAuthority().anyRequest()
+                .antMatchers("/home/**").hasAnyAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable()
                 .formLogin().loginPage("/login").failureUrl("/login?error=true")
                 .usernameParameter("email")

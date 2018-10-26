@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
+
 @Controller
 public class UserController {
 
@@ -25,8 +26,7 @@ public class UserController {
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     public ModelAndView login() {
         ModelAndView model = new ModelAndView();
-
-        model.setViewName("user/login");
+        model.setViewName("/login");
         return model;
     }
 
@@ -34,8 +34,8 @@ public class UserController {
     public ModelAndView signup() {
         ModelAndView model = new ModelAndView();
         User user = new User();
-        model.addObject("user", user);
-        model.setViewName("user/signup");
+        model.addObject("users", user);
+        model.setViewName("/signup");
 
         return model;
     }
@@ -48,12 +48,12 @@ public class UserController {
             bindingResult.rejectValue("email", "error.user", "This email already exists!");
         }
         if (bindingResult.hasErrors()) {
-            model.setViewName("user/signup");
+            model.setViewName("/signup");
         } else {
             userService.saveUser(user);
             model.addObject("msg", "User has been registred successfully!");
-            model.addObject("user", new User());
-            model.setViewName("user/signup");
+            model.addObject("users", new User());
+            model.setViewName("/signup");
         }
 
         return model;
