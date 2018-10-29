@@ -5,19 +5,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
+
 @Controller
 public class IndexController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String welcome(Model model) {
-        //model.addAttribute("text", "This is text");
+    public String welcome(Model model, Principal user) {
+
+        if (user==null){
+            model.addAttribute("currentuser", "noBodyHome");
+        }
+        else
+        {
+            model.addAttribute("currentuser", user.getName());
+        }
         return "HomePage";
     }
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-        public String login(){
-            return "login";
-    }
-
     @RequestMapping(value = "/map", method = RequestMethod.GET)
     public String map(){
         return "map";
@@ -26,5 +30,6 @@ public class IndexController {
     public String register(){
         return "signup";
     }
+
 }
 

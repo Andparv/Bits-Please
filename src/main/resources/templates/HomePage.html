@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <link>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img data-src="/static/BitsLogo.png" /></a>
+            <a class="navbar-brand" href="HomePage.html"><img data-src="/static/BitsLogo.png" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <img src="/static/navbarIcon.png" />
             </button>
@@ -50,9 +50,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Cart</a>
                     </li>
-                    <li class="nav-item">
-                        <a id="login-button" class="nav-link" href="#">Log in</a>
-                    </li>
+                    <div th:if="${currentuser} == 'noBodyHome'">
+                        <li class="nav-item">
+                            <a id="login-button" class="nav-link" href="/login">Log in</a>
+                        </li>
+                    </div>
+                    <div th:if="${currentuser} != 'noBodyHome'">
+                        <li>
+                            <a id="logout-button" class="nav-link" href="/logout">Log out</a>
+                        </li>
+                    </div>
+
                 </ul>
             </div>
         </div>
@@ -131,7 +139,6 @@
                     <hr class="light" />
                     <a class="footer-map" href="map">Map</a>
 
-
                 </div>
                 <div class="col-12">
                     <hr class="light-100" />
@@ -141,7 +148,7 @@
         </div>
     </footer>
     <script src="/static/js/HomePage.js"></script>
-    <script src="/static/js/popup.js"></script>
+    <!--<script src="/static/js/popup.js"></script>-->
     <script>
         window.addEventListener('load', function () {
             var allimages = document.getElementsByTagName('img');
