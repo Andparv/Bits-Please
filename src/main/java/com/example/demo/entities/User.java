@@ -5,15 +5,25 @@ import java.util.Set;
 
 
 @Entity
-@Table(name="user")
+@Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "firstname")
     private String firstname;
+
+    @Column(name = "lastname")
     private String lastname;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "uid")
     private String uid;
 
     public Integer getId() {

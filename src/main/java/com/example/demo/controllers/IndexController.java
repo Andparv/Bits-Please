@@ -31,10 +31,5 @@ public class IndexController {
     public String map(){
         return "map";
     }
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register(){
-        return "signup";
-    }
 
 }
-
