@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import com.example.demo.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,9 @@ import java.security.Principal;
 @Controller
 public class IndexController {
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(Model model, Principal user) {
 
@@ -23,13 +28,8 @@ public class IndexController {
         }
         else
         {
-            model.addAttribute("currentuser", user.getName());
+            model.addAttribute("currentuser", userService.getUser(user));
         }
         return "HomePage";
     }
-    @RequestMapping(value = "/map", method = RequestMethod.GET)
-    public String map(){
-        return "map";
-    }
-
 }

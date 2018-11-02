@@ -1,20 +1,26 @@
 package com.example.demo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Table(name = "phone")
 @Entity
 public class Phone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     private Long id;
-    public String imageAadress;
-    public String manifacturer;
-    public String model;
-    public double price;
+
+    private String imageAadress;
+
+    @Column(name = "manifacturer")
+    private String manifacturer;
+
+    @Column(name = "model")
+    private String model;
+
+    @Column(name = "price")
+    private double price;
 
     public String getImageAadress() {
         return imageAadress;

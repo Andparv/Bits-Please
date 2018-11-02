@@ -16,55 +16,28 @@ import java.util.Map;
 
 @Service
 public class UserService {
-
-    @Autowired
-    UserRepository userRepository;
-
-    private EntityManager entityManager;
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-
-    public User updateUserStatus(Principal principal){
-        Map<String,Object> info = (Map<String,Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
-
-        String uid = (String)info.get("sub");
-        String firstname = (String)info.get("given_name");
-        String lastname = (String)info.get("family_name");
-        String email = (String)info.get("email");
-        String password = passwordEncoder().encode((String)info.get("password"));
-
-        User user = userRepository.findByEmail(email);
-
-        if (user==null){
-            user = new User();
-            user.setEmail(email);
-            user.setFirstname(firstname);
-            user.setLastname(lastname);
-            user.setUid(uid);
-            user.setPassword(password);
-            userRepository.save(user);
-        }
-
-        return user;
-
-    }
-    public User getUser(Principal principal){
-        if (principal==null){
+    public User getUser(Principal principal) {
+        if (principal == null) {
             return null;
         }
-        Map<String,Object> info = (Map<String,Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
 
-        User user = userRepository.findByEmail((String)info.get("email"));
+        OAuth2Authentication auth2Authentication = (OAuth2Authentication) principal;
+        Map<String, Object> info = (Map<String, Object>) auth2Authentication.getUserAuthentication().getDetails();
 
-        if (user==null){
-            return updateUserStatus(principal);
-        }
+        String uid = (String) info.get("sub");
+        String firstname = (String) info.get("given_name");
+        String lastname = (String) info.get("family_name");
+        String email = (String) info.get("email");
+
+        User user = new User();
+        user.setEmail(email);
+        user.setFirstname(firstname);
+        user.setLastname(lastname);
+        user.setUid(uid);
+
+
         return user;
-    }
 
+    }
 
 }
