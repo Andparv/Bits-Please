@@ -128,9 +128,9 @@ figure {
 [class*="col-"] {
     padding: 1rem;
 }
-
-
-
+* {
+    box-sizing: border-box;
+}
 
 
 /*

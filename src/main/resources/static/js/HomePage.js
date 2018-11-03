@@ -9,3 +9,4 @@ function closeSearch() {
     $('.search-bar').hide()
     $('.search-link').show()
 }
+

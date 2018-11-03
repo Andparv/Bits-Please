@@ -9,18 +9,18 @@ public class Phone {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
-    private Long id;
+    public Long id;
 
-    private String imageAadress;
+    public String imageAadress;
 
     @Column(name = "manifacturer")
-    private String manifacturer;
+    public String manifacturer;
 
     @Column(name = "model")
-    private String model;
+    public String model;
 
     @Column(name = "price")
-    private double price;
+    public double price;
 
     public String getImageAadress() {
         return imageAadress;

@@ -3,29 +3,45 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>Product List</title>
+    <title>Store</title>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 </head>
 <body>
-<th:block th:include="/_header"></th:block>
-<th:block th:include="/_menu"></th:block>
+<div id="store"></div>
 
-<div class="page-title">Store</div>
-<div class="product-preview-container" th:each="phone : ${phone}">
-    <ul>
-        <li><img class="product-image"
-                 th:src="@{|/productImage?code=${phone.id}|}" /></li>
-        <li>Id: <span th:utext="${phone.id}"></span></li>
-        <li>Model: <span th:utext="${phone.model}"></span></li>
-        <li>Price: <span th:utext="${phone.price}"></span></li>
-        <li>
-            <a th:href="@{|/buyPhone?code=${phone.id}|}">Buy Now</a>
-        </li>
-    </ul>
+<div th:if="${not #lists.isEmpty(phoneList)}">
+    <h2>Store</h2>
+    <div class="product-article-container">
+        <ol class="oi-list oi-grid-products">
+            <tr th:each="phone:${phoneList}">
+            <li class="oi-item">
+                <div class="oi-product-thumb">
+                    <p class="image">
+                        <a href="/buyPhone/">
+                            <img th:src="@{'/static/' + ${phone.id} + '.png'}"
+                                 th:title="${phone.id}"
+                                 th:alt="${phone.id}"
+                                 width="165" height="165">
+                        </a>
+                    </p>
+                    <h3 class="name">
+                        <a href="/buyPhone/{id}">
+                            <span>
+                                <td th:text="${phone.model}"></td>
+                            </span>
+                        </a>
+                    </h3>
+                    <p class="productID"><td th:text="${phone.id}"></td>
+                    </p>
+                    <div class="oi-product-bottom">
+                        <p class="price"><td th:text="${phone.price}">€</td></p>
+                    </div>
+                </div>
+            </li>
+            </tr>
+        </ol>
+    </div>
 </div>
 <br/>
-
-<th:block th:include="/_footer"></th:block>
-
 </body>
 </html>
