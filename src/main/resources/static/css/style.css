@@ -29,8 +29,9 @@ html, body {
 }
 
 #map {
-    height: 72px; /* The height is 400 pixels */
-    width: 72px; /* The width is the width of the web page */
+    height: 300px;
+    width: 75%;
+    left: 12.5%;
 }
 
 
