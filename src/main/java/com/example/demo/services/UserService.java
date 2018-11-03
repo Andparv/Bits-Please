@@ -46,7 +46,6 @@ public class UserService {
         user.setLastname(lastname);
         user.setUid(uid);
 
-
         return user;
     }
 

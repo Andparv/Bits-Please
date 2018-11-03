@@ -24,7 +24,7 @@ public class IndexController {
     private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String welcome(Model model, Principal user, String email) {
+    public String welcome(Model model, Principal user) {
 
         if (user==null){
             model.addAttribute("currentuser", "noBodyHome");
@@ -32,8 +32,8 @@ public class IndexController {
         else
         {
             Map<String, Object> info = (Map<String, Object>) ((OAuth2Authentication) user).getUserAuthentication().getDetails();
-
-            model.addAttribute("currentuser", userService.getUser((String) info.get("email"), user));
+            String email = (String) info.get("email");
+            model.addAttribute("currentuser", userService.getUser(email, user));
         }
         return "HomePage";
     }
