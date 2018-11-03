@@ -27,25 +27,6 @@ public class UserService {
         String email = (String) info.get("email");
 
         User user = userRepository.findByEmail(email);
-        System.out.println(principal);
-        return user;
-    }
-    public User getUser(String email, Principal principal) {
-        if (principal == null) {
-            return null;
-        }
-        Map<String, Object> info = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
-
-        String uid = (String) info.get("sub");
-        String firstname = (String) info.get("given_name");
-        String lastname = (String) info.get("family_name");
-
-        User user = new User();
-        user.setEmail(email);
-        user.setFirstname(firstname);
-        user.setLastname(lastname);
-        user.setUid(uid);
-
         return user;
     }
 
@@ -54,6 +35,7 @@ public class UserService {
         String uid = (String) info.get("sub");
         String firstname = (String) info.get("given_name");
         String lastname = (String) info.get("family_name");
+
         userRepository.save(email, firstname, lastname, uid, LocalDate.now());
         return true;
     }

@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/register")
+    @PostMapping("/login")
     @ResponseBody
     public ResponseEntity registerUser(@ModelAttribute("email") String email, Principal principal){
         if (userService.getUser(principal)!=null){

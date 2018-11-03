@@ -31,17 +31,15 @@ public class IndexController {
         }
         else
         {
-            Map<String, Object> info = (Map<String, Object>) ((OAuth2Authentication) user).getUserAuthentication().getDetails();
-            String email = (String) info.get("email");
-            model.addAttribute("currentuser", userService.getUser(email, user));
+            model.addAttribute("currentuser","someBodyHome");
         }
         return "HomePage";
     }
-    @GetMapping("/register")
+    @GetMapping("/login")
     public String registerPrompt(Principal principal) {
         if (userService.getUser(principal) != null) {
             return "redirect:/";
         }
-        return "register";
+        return "login";
     }
 }
