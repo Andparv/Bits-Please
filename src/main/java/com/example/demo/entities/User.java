@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 
@@ -8,7 +9,7 @@ import java.util.Set;
 @Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "email")
@@ -20,11 +21,21 @@ public class User {
     @Column(name = "lastname")
     private String lastname;
 
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "uid")
     private String uid;
+
+    @Column(name = "date")
+    private LocalDate date;
+
+    public User(String email, String firstname, String lastname, String uid, LocalDate date) {
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.uid = uid;
+        this.date = date;
+    }
+    public User(){
+    }
 
     public Integer getId() {
         return id;
@@ -58,20 +69,20 @@ public class User {
         this.lastname = lastname;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getUid() {
         return uid;
     }
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override

@@ -20,8 +20,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
                 .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/", "/static/**") //leiab kõik pildid ja asjad static kaustast
-                .permitAll()
+                .antMatchers("/", "/static/**", "/store").permitAll()
                 .anyRequest()
                 .authenticated();
 

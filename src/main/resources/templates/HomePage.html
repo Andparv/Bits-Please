@@ -56,6 +56,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Cart</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mypage">My account</a>
+                    </li>
                     <div th:if="${currentuser} == 'noBodyHome'">
                         <li class="nav-item">
                             <a id="login-button" class="nav-link" href="/login">Log in</a>
@@ -65,7 +68,7 @@
                         <li>
                             <a id="Logout" class="nav-link" href="/logout">Log out</a>
                         </li>
-                        <h3  th:text="'Hello, ' + ${currentuser.firstname}"></h3>
+                        <h3  th:text="'Hello, ' + ${currentuser}"></h3>
                     </div>
 
                 </ul>
