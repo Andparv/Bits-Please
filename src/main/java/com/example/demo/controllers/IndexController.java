@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -35,11 +36,16 @@ public class IndexController {
         }
         return "HomePage";
     }
-    @GetMapping("/login")
+    @GetMapping("/register")
     public String registerPrompt(Principal principal) {
         if (userService.getUser(principal) != null) {
             return "redirect:/";
         }
-        return "login";
+        return "register";
+    }
+    @RequestMapping("/user")
+    public @ResponseBody
+    Principal user(Principal principal) {
+        return principal;
     }
 }

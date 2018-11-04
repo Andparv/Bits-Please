@@ -15,7 +15,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     @Modifying
     @Query(nativeQuery = true, value = "INSERT INTO user" +
-            "(email, firstname, lastname, uid, date)" +
+            " (email, firstname, lastname, uid, date) " +
     "VALUES (:email, :firstname, :lastname, :uid, :date)")
     void save(@Param("email") String email, @Param("firstname") String firstname,
               @Param("lastname") String lastname, @Param("uid") String uid,
@@ -23,5 +23,4 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     @Query(nativeQuery = true, value = "SELECT * FROM user WHERE email=:email")
     User findByEmail(@Param("email") String email);
-
 }
