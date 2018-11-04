@@ -3,7 +3,8 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>BitsPhones Store - Best new tech on the market.</title>
+    <meta name="description" content="BitsPhones best online phone store. BitsPhones gives you a chance to quickly and easily find the phone you want.">
+    <title>BitsPhones Store - Find a phone that is just for you.</title>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 </head>
 <body>
@@ -21,7 +22,8 @@
                             <img th:src="@{'/static/' + ${phone.id} + '.png'}"
                                  th:title="${phone.id}"
                                  th:alt="${phone.id}"
-                                 width="165" height="165">
+                                 width="165" height="165"
+                                 alt="Phone">
                         </a>
                     </p>
                     <h3 class="name">
