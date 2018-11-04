@@ -36,6 +36,20 @@ public class IndexController {
         }
         return "HomePage";
     }
+
+	@RequestMapping(value = "/ee", method = RequestMethod.GET)
+    public String welcome(Model model, Principal user) {
+
+        if (user==null){
+            model.addAttribute("currentuser", "noBodyHome");
+        }
+        else
+        {
+            model.addAttribute("currentuser","someBodyHome");
+        }
+        return "ee";
+    }
+
     @GetMapping("/register")
     public String registerPrompt(Principal principal) {
         if (userService.getUser(principal) != null) {

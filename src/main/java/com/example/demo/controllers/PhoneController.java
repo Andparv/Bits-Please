@@ -33,6 +33,12 @@ public class PhoneController {
         return "store";
     }
 
+	@RequestMapping("/pood")
+    public String phoneList(Model model){
+        model.addAttribute("phoneList", phoneService.listAll());
+        return "pood";
+    }
+
     @RequestMapping(value = "/buyPhone/{id}", method = RequestMethod.GET)
     public String getBootById(Model model, @PathVariable("id") Long id){
         Optional<Phone> phone = phoneRepository.findById(id);
