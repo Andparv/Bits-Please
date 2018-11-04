@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
@@ -9,11 +9,11 @@
 <body>
 <div id="pood"></div>
 
-<div th:if="${not #lists.isEmpty(phoneList)}">
+<div th:if="${not #lists.isEmpty(teloList)}">
     <h2>Pood</h2>
     <div class="product-article-container">
         <ol class="oi-list oi-grid-products">
-            <tr th:each="phone:${phoneList}">
+            <tr th:each="phone:${teloList}">
             <li class="oi-item">
                 <div class="oi-product-thumb">
                     <p class="image">
