@@ -22,7 +22,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
               @Param("date") LocalDate date);
 
     @Query(nativeQuery = true, value = "SELECT * FROM user WHERE email=:email")
-
     User findByEmail(@Param("email") String email);
 
 }
