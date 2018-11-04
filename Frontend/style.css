@@ -7,7 +7,9 @@ html, body {
     color: #b98847;
     background-color: white;
 }
-
+.lang {
+    padding: 2% 2%;   
+}
 .navbar {
     padding: .8rem;
     background-color: white;
