@@ -30,6 +30,10 @@ public class UserService {
         return user;
     }
 
+    public User getUser(String email){
+        return userRepository.findByEmail(email);
+    }
+
     public boolean addUser(String email, Principal principal){
         Map<String, Object> info = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
         String uid = (String) info.get("sub");

@@ -20,7 +20,7 @@ public class UserController {
     @PostMapping("/login")
     @ResponseBody
     public ResponseEntity registerUser(@ModelAttribute("email") String email, Principal principal){
-        if (userService.getUser(principal)!=null){
+        if (userService.getUser(email)!=null){
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
         userService.addUser(email, principal);
