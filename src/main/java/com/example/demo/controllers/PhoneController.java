@@ -34,7 +34,7 @@ public class PhoneController {
     }
 
 	@RequestMapping("/pood")
-    public String phoneList(Model model){
+    public String teloList(Model model){
         model.addAttribute("phoneList", phoneService.listAll());
         return "pood";
     }

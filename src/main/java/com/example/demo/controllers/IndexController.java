@@ -38,7 +38,7 @@ public class IndexController {
     }
 
 	@RequestMapping(value = "/ee", method = RequestMethod.GET)
-    public String welcome(Model model, Principal user) {
+    public String estHome(Model model, Principal user) {
 
         if (user==null){
             model.addAttribute("currentuser", "noBodyHome");
