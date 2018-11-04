@@ -28,6 +28,12 @@ html, body {
     height: 100%;
 }
 
+#map {
+    height: 300px;
+    width: 75%;
+    left: 12.5%;
+}
+
 
 
 

@@ -7,18 +7,11 @@
     "\\src\\main\\java\\com",
     "\\src\\main\\java\\com\\example",
     "\\src\\main\\java\\com\\example\\demo",
-    "\\src\\main\\java\\com\\example\\demo\\controllers",
-    "\\src\\main\\java\\com\\example\\demo\\repository",
+    "\\src\\main\\java\\com\\example\\demo\\entities",
     "\\src\\main\\resources",
     "\\src\\main\\resources\\static",
-    "\\src\\main\\resources\\static\\css",
-    "\\src\\main\\resources\\static\\gif",
-    "\\src\\main\\resources\\static\\js",
-    "\\src\\main\\resources\\templates",
-    "\\src\\test",
-    "\\src\\test\\java",
-    "\\web"
+    "\\src\\main\\resources\\static\\css"
   ],
-  "SelectedNode": "\\src\\main\\resources\\static\\HomePage.js",
+  "SelectedNode": "\\src\\main\\resources\\static\\css\\style.css",
   "PreviewInSolutionExplorer": false
 }
