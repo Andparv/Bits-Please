@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ee" xmlns:th="http://www.w3.org/1999/xhtml">
 <link>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,39 +42,39 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="/">Koduleht</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="store">Store</a>
+                            <a class="nav-link" href="pood">Pood</a>
                         </li>
                         <li class="search-link">
-                            <a class="nav-link" href="#">Search</a>
+                            <a class="nav-link" href="#">Otsing</a>
                         </li>
                         <li class="search-bar">
                             <form>
                                 <div>
                                     <input type="search" id="search" name="q"
-                                           placeholder="Search...">
-                                    <button>Search</button>
+                                           placeholder="Otsi...">
+                                    <button>Otsi</button>
                                 </div>
                             </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cart</a>
+                            <a class="nav-link" href="#">Ostukorv</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/mypage">My account</a>
+                            <a class="nav-link" href="/mypage">Minu kasutaja</a>
                         </li>
                         <div th:if="${currentuser} == 'noBodyHome'">
                             <li class="nav-item">
                                 <div class="nav-item">
-                                    <a id="login-button" class="nav-link" href="#">Log in</a>
+                                    <a id="login-button" class="nav-link" href="#">Sisene</a>
                                 </div>
                             </li>
                         </div>
                         <div th:if="${currentuser} != 'noBodyHome'">
                             <li>
-                                <a id="Logout" class="nav-link" href="/logout">Log out</a>
+                                <a id="Logout" class="nav-link" href="/logout">Välju</a>
                             </li>
                         </div>
 
@@ -89,13 +89,13 @@
                 <div>
                     <form class="form-horizontal" id="register" th:action="@{/register}" method="post">
                         <div class="form-group">
-                            <button type="submit" id="bth-save">Not a user? Sign up!
+                            <button type="submit" id="bth-save">Pole kasutaja? Registeeri!
                             </button>
                         </div>
                     </form>
                 </div>
                 <div>
-                    <input id="modal-close-button" type="button" value="Close" />
+                    <input id="modal-close-button" type="button" value="Sulge" />
                 </div>
             </div>
         </nav>
@@ -146,14 +146,14 @@
                     </div>
                     <div class="col-md-4">
                         <hr class="light" />
-                        <h5>Open hours</h5>
+                        <h5>Avatud</h5>
                         <hr class="light" />
-                        <p>Monday - Friday: 10pm - 7pm</p>
-                        <p>Saturday - Sunday: 10pm - 3pm</p>
+                        <p>Esmaspäev - Reede: 10pm - 7pm</p>
+                        <p>Laupäev - Pühapäev: 10pm - 3pm</p>
                     </div>
                     <div class="col-md-4">
                         <hr class="light" />
-                        <h5>Additional information</h5>
+                        <h5>Täpsem informatsioon</h5>
                         <hr class="light" />
                         <div id="map"></div>
 
