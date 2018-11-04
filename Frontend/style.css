@@ -8,7 +8,11 @@ html, body {
     background-color: white;
 }
 .lang {
-    padding: 2% 2%;   
+    padding: 5px 8px;   
+}
+
+.lang2 {
+    padding: 2% 4%;   
 }
 .navbar {
     padding: .8rem;

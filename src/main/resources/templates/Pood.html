@@ -7,10 +7,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 </head>
 <body>
-<div id="store"></div>
+<div id="pood"></div>
 
 <div th:if="${not #lists.isEmpty(phoneList)}">
-    <h2>Store</h2>
+    <h2>Pood</h2>
     <div class="product-article-container">
         <ol class="oi-list oi-grid-products">
             <tr th:each="phone:${phoneList}">
