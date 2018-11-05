@@ -10,11 +10,11 @@
 <body>
 <div id="pood"></div>
 
-<div th:if="${not #lists.isEmpty(teloList)}">
+<div th:if="${not #lists.isEmpty(phoneList)}">
     <h2>Pood</h2>
     <div class="product-article-container">
         <ol class="oi-list oi-grid-products">
-            <tr th:each="phone:${teloList}">
+            <tr th:each="phone:${phoneList}">
             <li class="oi-item">
                 <div class="oi-product-thumb">
                     <p class="image">
