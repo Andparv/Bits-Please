@@ -2,7 +2,6 @@ package com.example.demo.services;
 
 import com.example.demo.entities.User;
 import com.example.demo.repository.UserRepository;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
@@ -34,13 +33,11 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public boolean addUser(String email, Principal principal){
+    public void addUser(String email, Principal principal){
         Map<String, Object> info = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
         String uid = (String) info.get("sub");
         String firstname = (String) info.get("given_name");
         String lastname = (String) info.get("family_name");
-
         userRepository.save(email, firstname, lastname, uid, LocalDate.now());
-        return true;
     }
 }
