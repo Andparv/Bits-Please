@@ -20,7 +20,9 @@ public class UserController {
         Map<String, Object> info = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
         String email = (String) info.get("email");
         System.out.println(info);
-
+        if (userService.getUser(email)!=null){
+            return "HomePage";
+        }
         userService.addUser(email, principal);
         return "HomePage";
     }
