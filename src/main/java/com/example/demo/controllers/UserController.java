@@ -18,8 +18,8 @@ public class UserController {
     @PostMapping("/register")
     public String registerUser(Principal principal){
         Map<String, Object> info = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
-        String email = (String) info.get("email");
         System.out.println(info);
+        String email = (String) info.get("email");
         if (userService.getUser(email)!=null){
             return "HomePage";
         }
