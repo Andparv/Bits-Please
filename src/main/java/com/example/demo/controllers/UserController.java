@@ -23,7 +23,7 @@ public class UserController {
         if (userService.getUser(email)!=null){
             return "HomePage";
         }
-        userService.addUser(email, principal);
+        userService.addUser(principal);
         return "HomePage";
     }
 }
