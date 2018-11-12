@@ -16,7 +16,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/register")
-    public String registerUser(Principal principal){
+    public String registerUser(Principal principal) throws Exception {
         Map<String, Object> info = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
         System.out.println(info);
         String email = (String) info.get("email");
