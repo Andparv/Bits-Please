@@ -77,7 +77,6 @@ public class FileUploadController {
 
         if (user != null) {
             user.setPictureName(picture);
-            userRepository.save(user);
         }
 
         return "redirect:/mypage";

@@ -18,8 +18,7 @@ public class Picture {
     @Column(name = "pictureName")
     public String pictureName;
 
-    @OneToOne(fetch = FetchType.LAZY,
-            mappedBy = "pictureName")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "pictureName")
     public User user;
 
     public Picture(){
