@@ -20,8 +20,8 @@ public class User {
     @Column(name = "lastname")
     public String lastname;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "uid", nullable = false, updatable = false, insertable = false)
+    @OneToOne(fetch = FetchType.LAZY, optional = false,cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id", nullable = false, updatable = false, insertable = false)
     public Picture pictureName;
 
     @Column(name = "uid")

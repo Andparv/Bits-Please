@@ -12,12 +12,12 @@ public interface PictureRepository extends CrudRepository<User, Integer>{
 
     @Modifying
     @Query(nativeQuery = true, value = "INSERT INTO pictures" +
-            " (uid, picture) " +
-            "VALUES (:uid, :picture)")
-    void save(@Param("uid") String uid, @Param("picture") String picture);
+            " (id, uid, picture) " +
+            "VALUES (:id, :uid, :picture)")
+    void save(@Param ("id") Integer idd, @Param("uid") String uid, @Param("picture") String picture);
 
     @Query(nativeQuery = true, value = "SELECT pictures.pictureName , user.email " +
-            "FROM user INNER JOIN pictures ON pictures.uid=user.uid WHERE email=:email ORDER BY 1")
+            "FROM user INNER JOIN pictures ON pictures.id=user.id WHERE email=:email ORDER BY 1")
     User findPicture(@Param("email") String email);
 
 }

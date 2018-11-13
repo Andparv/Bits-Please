@@ -8,6 +8,9 @@ import javax.persistence.*;
 public class Picture {
 
     @Id
+    @Column
+    public Integer id;
+
     @Column(name = "uid")
     public String uid;
 
@@ -16,8 +19,7 @@ public class Picture {
     public String pictureName;
 
     @OneToOne(fetch = FetchType.LAZY,
-    cascade =  CascadeType.ALL,
-    mappedBy = "pictureName")
+            mappedBy = "pictureName")
     public User user;
 
     public Picture(){
