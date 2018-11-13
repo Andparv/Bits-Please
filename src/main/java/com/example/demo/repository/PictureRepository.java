@@ -1,4 +1,4 @@
-/*package com.example.demo.repository;
+package com.example.demo.repository;
 
 import com.example.demo.entities.User;
 import org.springframework.data.jpa.repository.Modifying;
@@ -16,5 +16,8 @@ public interface PictureRepository extends CrudRepository<User, Integer>{
             "VALUES (:uid, :picture)")
     void save(@Param("uid") String uid, @Param("picture") String picture);
 
+    @Query(nativeQuery = true, value = "SELECT pictures.pictureName , user.email " +
+            "FROM user INNER JOIN pictures ON pictures.uid=user.uid WHERE email=:email ORDER BY 1")
+    User findPicture(@Param("email") String email);
+
 }
-*/

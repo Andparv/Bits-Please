@@ -1,5 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.Picture;
+import com.example.demo.entities.User;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.services.UserService;
 import com.example.demo.storage.StorageFileNotFoundException;
 import com.example.demo.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.stream.Collectors;
 
 @Controller
@@ -26,13 +31,29 @@ public class FileUploadController {
         this.storageService = storageService;
     }
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("/mypage")
-    public String listUploadedFiles(Model model) throws IOException {
+    public String listUploadedFiles(Model model, Principal principal) throws IOException {
 
         model.addAttribute("files", storageService.loadAll().map(
                 path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
                         "serveFile", path.getFileName().toString()).build().toString())
                 .collect(Collectors.toList()));
+
+
+        User user = userService.getUser(principal);
+
+        if (user != null) {
+            model.addAttribute("pictureName", user.getPictureName());
+        }
+        else {
+            model.addAttribute("pictureName", null);
+        }
 
         return "mypage";
     }
@@ -48,13 +69,18 @@ public class FileUploadController {
 
     @PostMapping("/mypage")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+                                   RedirectAttributes redirectAttributes, Principal principal) {
 
         storageService.store(file);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
+        User user = userService.getUser(principal);
+        Picture picture = new Picture(file.getOriginalFilename());
 
-        return "redirect:/";
+        if (user != null) {
+            user.setPictureName(picture);
+            userRepository.save(user);
+        }
+
+        return "redirect:/mypage";
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

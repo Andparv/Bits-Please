@@ -2,7 +2,6 @@ package com.example.demo.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
 
 @Entity
@@ -10,22 +9,26 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    public Integer id;
 
     @Column(name = "email")
-    private String email;
+    public String email;
 
     @Column(name = "firstname")
-    private String firstname;
+    public String firstname;
 
     @Column(name = "lastname")
-    private String lastname;
+    public String lastname;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "uid", nullable = false, updatable = false, insertable = false)
+    public Picture pictureName;
 
     @Column(name = "uid")
-    private String uid;
+    public String uid;
 
     @Column(name = "date")
-    private LocalDate date;
+    public LocalDate date;
 
     public User(String email, String firstname, String lastname, String uid, LocalDate date) {
         this.email = email;
@@ -35,6 +38,14 @@ public class User {
         this.date = date;
     }
     public User(){
+    }
+
+    public void setPictureName(Picture pictureName) {
+        this.pictureName = pictureName;
+    }
+
+    public Picture getPictureName() {
+        return pictureName;
     }
 
     public Integer getId() {
@@ -99,4 +110,6 @@ public class User {
         }
         return false;
     }
+
+
 }

@@ -31,10 +31,10 @@
                             </span>
                         </a>
                     </h3>
-                    <p class="productID"><td th:text="${phone.id}"></td>
+                    <p class="productID"><td th:text="'Code: '+${phone.id}"></td>
                     </p>
                     <div class="oi-product-bottom">
-                        <p class="price"><td th:text="${phone.price}">€</td></p>
+                        <p class="price"><td th:text="'Price: '+${phone.price}">€</td></p>
                     </div>
                 </div>
             </li>

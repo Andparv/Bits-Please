@@ -1,15 +1,30 @@
 package com.example.demo.entities;
 
-public class Picture {
-        private String uid;
-        private byte[] image;
 
-    public byte[] getImage() {
-        return image;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "picture")
+public class Picture {
+
+    @Id
+    @Column(name = "uid")
+    public String uid;
+
+
+    @Column(name = "pictureName")
+    public String pictureName;
+
+    @OneToOne(fetch = FetchType.LAZY,
+    cascade =  CascadeType.ALL,
+    mappedBy = "pictureName")
+    public User user;
+
+    public Picture(){
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public Picture(String pictureName) {
+        this.pictureName = pictureName;
     }
 
     public String getUid() {
@@ -19,5 +34,13 @@ public class Picture {
     public void setUid(String uid) {
         this.uid = uid;
     }
-//with their getter and setters
+
+    public String getPictureName() {
+        return pictureName;
+    }
+
+    public void setPictureName(String pictureName) {
+        this.pictureName = pictureName;
+    }
+    //with their getter and setters
 }
