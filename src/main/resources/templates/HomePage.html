@@ -33,8 +33,6 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <img src="/static/navbarIcon.png" alt="navbarIcon"/>
                 </button>
-                <a href="ee"><img src="/static/EST.png" style="float:left;width:10%;height:20%;" alt="EST" /></a>
-                <a href="/"><img src="/static/UK.png" style="float:left;width:10%;height:20%;" alt="UK"/></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
@@ -71,6 +69,13 @@
                         
                         <li class="nav-item" th:if="${currentuser} != 'noBodyHome'">
                                 <a id="Logout" class="nav-link" href="/logout">Log out</a>
+                        </li>
+                            
+                        <li>
+                            <a href="ee"><img src="/static/EST.png" style="float:left;width:10%;height:20%;" alt="EST" /></a>
+                        </li>
+                        <li>
+                            <a href="/"><img src="/static/UK.png" style="float:left;width:10%;height:20%;" alt="UK" /></a>
                         </li>
                 
 
