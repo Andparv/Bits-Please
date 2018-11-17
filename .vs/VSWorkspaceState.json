@@ -9,9 +9,8 @@
     "\\src\\main\\java\\com\\example\\demo",
     "\\src\\main\\java\\com\\example\\demo\\entities",
     "\\src\\main\\resources",
-    "\\src\\main\\resources\\static",
-    "\\src\\main\\resources\\static\\css"
+    "\\src\\main\\resources\\templates"
   ],
-  "SelectedNode": "\\src\\main\\resources\\static\\css\\style.css",
+  "SelectedNode": "\\src\\main\\resources\\templates\\Pood.html",
   "PreviewInSolutionExplorer": false
 }

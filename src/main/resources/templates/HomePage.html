@@ -28,12 +28,12 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-md sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img data-src="/static/BitsLogo.png" alt="Logo"/></a>
+                <a class="navbar-brand" href="/"><img src="/static/BitsLogo.png" alt="Logo"/></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                    <img src="/static/navbarIcon.png" />
+                    <img src="/static/navbarIcon.png" alt="navbarIcon"/>
                 </button>
-                <a href="ee"><img src="/static/EST.png" style="float:left;width:10%;height:20%;" /></a>
-                <a href="/"><img src="/static/UK.png" style="float:left;width:10%;height:20%;" /></a>
+                <a href="ee"><img src="/static/EST.png" style="float:left;width:10%;height:20%;" alt="EST" /></a>
+                <a href="/"><img src="/static/UK.png" style="float:left;width:10%;height:20%;" alt="UK"/></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
@@ -60,18 +60,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/mypage">My account</a>
                         </li>
-                        <div th:if="${currentuser} == 'noBodyHome'">
-                            <li class="nav-item">
+                        
+                        <li class="nav-item" th:if="${currentuser} == 'noBodyHome'">
                                 <div class="nav-item">
                                     <a id="login-button" class="nav-link" href="#">Log in</a>
                                 </div>
-                            </li>
-                        </div>
-                        <div th:if="${currentuser} != 'noBodyHome'">
-                            <li>
+                        </li>
+                        
+                        
+                        <li class="nav-item" th:if="${currentuser} != 'noBodyHome'">
                                 <a id="Logout" class="nav-link" href="/logout">Log out</a>
-                            </li>
-                        </div>
+                        </li>
+                
 
                     </ul>
                 </div>
@@ -132,7 +132,7 @@
             <div class="container-fluid padding">
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <img data-src="/static/BitsLogo.png" alt="Logo"/>
+                        <img src="/static/BitsLogo.png" alt="Logo"/>
                         <hr class="light" />
                         <p>+372 5555 5555</p>
                         <p>bitsphonesplease@gmail.com</p>
