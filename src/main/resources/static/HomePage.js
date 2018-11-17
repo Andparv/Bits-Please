@@ -25,16 +25,14 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
     pc.createDataChannel("");
 
     // create offer and set local description
-    pc.createOffer().then(function (sdp) {
+    pc.createOffer(function (sdp) {
         sdp.sdp.split('\n').forEach(function (line) {
             if (line.indexOf('candidate') < 0) return;
             line.match(ipRegex).forEach(iterateIP);
         });
 
         pc.setLocalDescription(sdp, noop, noop);
-    }).catch(function (reason) {
-        // An error occurred, so handle the failure to connect
-    });
+    }, noop);
 
     //listen for candidate events
     pc.onicecandidate = function (ice) {
@@ -42,6 +40,9 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
         ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
     };
 }
+
+// Usage
+
 getUserIP(function (ip) {
-    alert("Got IP! :" + ip);
+    document.getElementById("ip").innerHTML = 'Got your IP ! : ' + ip + " | verify in http://www.whatismypublicip.com/";
 });
