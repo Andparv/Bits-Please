@@ -60,7 +60,8 @@
                             <div id="myModal" class="modal">
                             	<div class="modal-content">
                             		<span class="close">&times;</span>
-                            		<table id="demo"></table>
+                            		<table id="demoTable"></table>
+                            		<p id="demo"></p>
                             	</div>
                             </div>
                         </li>
@@ -262,7 +263,7 @@
 					    x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
 					    "</td></tr>";
 				  	}
-					document.getElementById("demo").innerHTML = table;
+					document.getElementById("demoTable").innerHTML = table;
 			
 				}
 			}
