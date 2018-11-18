@@ -61,7 +61,7 @@
                             	<div class="modal-content">
                             		<span class="close">&times;</span>
                             		<table id="demoTable"></table>
-                            		<p id="demo2"></p>
+                            		<p id="demo"></p>
                             	</div>
                             </div>
                         </li>
@@ -176,7 +176,7 @@
                         <hr class="light-100" />
                         <h5>&copy; bitsphones.com</h5>
                         <span id="ip"></span>
-                        <p id="demo"></p>
+                        <p id="platform"></p>
                         <div>
                             <h4 th:text="'Total '+${usercount}+' users registred.'">usereid nii palju</h4>
                         </div>
@@ -211,7 +211,7 @@
 
         <script>
             var now = new Date();
-            document.getElementById("demo").innerHTML =
+            document.getElementById("platform").innerHTML =
                 "navigator.appName is " + navigator.platform + " " + now;
         </script>   
         <script>
