@@ -7,10 +7,21 @@
     "\\src\\main\\java\\com",
     "\\src\\main\\java\\com\\example",
     "\\src\\main\\java\\com\\example\\demo",
-    "\\src\\main\\java\\com\\example\\demo\\entities",
+    "\\src\\main\\java\\com\\example\\demo\\configuration",
+    "\\src\\main\\java\\com\\example\\demo\\controllers",
+    "\\src\\main\\java\\com\\example\\demo\\repository",
+    "\\src\\main\\java\\com\\example\\demo\\services",
+    "\\src\\main\\java\\com\\example\\demo\\storage",
     "\\src\\main\\resources",
-    "\\src\\main\\resources\\templates"
+    "\\src\\main\\resources\\static",
+    "\\src\\main\\resources\\static\\js",
+    "\\src\\test",
+    "\\src\\test\\java",
+    "\\src\\test\\java\\com",
+    "\\src\\test\\java\\com\\example",
+    "\\src\\test\\java\\com\\example\\demo",
+    "\\upload-dir"
   ],
-  "SelectedNode": "\\src\\main\\resources\\templates\\Pood.html",
+  "SelectedNode": "\\src\\main\\resources\\static\\js\\HomePage.js",
   "PreviewInSolutionExplorer": false
 }
