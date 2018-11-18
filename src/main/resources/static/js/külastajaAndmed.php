@@ -11,7 +11,7 @@ $Platform = mysqli_real_escape_string($conn, $_POST['Platform']);
 
 if (strlen($times) > 200000) {  $times = "";    }
 
-$sql = "INSERT INTO visitors
+$sql = "INSERT INTO visitors (dateANDtime, IPaddress, platform)
 VALUES ('$date', '$IP', '$Platform')";
 
 if ($conn->query($sql) === TRUE) {
