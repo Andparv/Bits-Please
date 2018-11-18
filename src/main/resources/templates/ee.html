@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="ee" xmlns:th="http://www.w3.org/1999/xhtml">
-<link>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BitsPhones</title>
@@ -29,9 +28,9 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-md sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="/static/BitsLogo.png" /></a>
+                <a class="navbar-brand" href="/"><img src="/static/BitsLogo.png" alt="Logo"/></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                    <img src="/static/navbarIcon.png" />
+                    <img src="/static/navbarIcon.png" alt="menüü"/>
                 </button>
                 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -109,13 +108,13 @@
             </ul>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="/static/kuradiuuspilt.jpg" />
+                    <img src="/static/kuradiuuspilt.jpg" alt="reklaam"/>
                 </div>
                 <div class="carousel-item">
-                    <img src="/static/Add2.1.jpg" />
+                    <img src="/static/Add2.1.jpg" alt="reklaam"/>
                 </div>
                 <div class="carousel-item">
-                    <img src="/static/Add3.1.jpg" />
+                    <img src="/static/Add3.1.jpg" alt="reklaam"/>
                 </div>
             </div>
         </div>
@@ -136,7 +135,7 @@
             <div class="container-fluid padding">
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <img src="/static/BitsLogo.png" />
+                        <img src="/static/BitsLogo.png" alt="Logo"/>
                         <hr class="light" />
                         <p>+372 5555 5555</p>
                         <p>email@bitsphones.com</p>
@@ -160,7 +159,7 @@
                     <div class="col-12">
                         <hr class="light-100" />
                         <h5>&copy; bitsphones.com</h5>
-                        <div align="right"><h4 th:text="'Total '+${usercount}+' users registred.'">usereid nii palju</h4>
+                        <div><h4 th:text="'Total '+${usercount}+' users registred.'">usereid nii palju</h4>
                         </div>
                     </div>
                 </div>
