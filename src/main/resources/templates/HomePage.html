@@ -181,8 +181,8 @@
             window.addEventListener('load', function () {
                 var allimages = document.getElementsByTagName('img');
                 for (var i = 0; i < allimages.length; i++) {
-                    if (allimages[i].getAttribute('data-src')) {
-                        allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
+                    if (allimages[i].getAttribute('src')) {
+                        allimages[i].setAttribute('src', allimages[i].getAttribute('src'));
                     }
                 }
             }, false)
@@ -202,7 +202,7 @@
 
         <script>
             document.getElementById("demo").innerHTML =
-                "navigator.appName is " + navigator.appCodeName;
+                "navigator.appName is " + navigator.platform;
         </script>
     </body>
 </html>
