@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="ee" xmlns:th="http://www.w3.org/1999/xhtml">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BitsPhones</title>
@@ -15,243 +15,253 @@
     <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/static/css/base.css">
     <link rel="stylesheet" type="text/css" href="/static/css/popup.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129380971-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    <style>
+        gtag('config', 'UA-129380971-1');
+    </script>
 
-        .search-bar {
-            display: none;
-        }
-    </style>
+<style>
+
+    .search-bar {
+        display: none;
+    }
+</style>
 
 </head>
-    <body>
+<body>
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-md sticky-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="/static/BitsLogo.png" alt="Logo"/></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                    <img src="/static/navbarIcon.png" alt="menüü"/>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Koduleht</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pood">Pood</a>
-                        </li>
-                        <li class="search-link">
-                            <a class="nav-link" href="#">Otsing</a>
-                        </li>
-                        <li class="search-bar">
-                            <form>
-                                <div>
-                                    <input type="search" id="search" name="q"
-                                           placeholder="Otsi...">
-                                    <button>Otsi</button>
-                                </div>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" onclick="loadDoc()" id="myBtn">Ostukorv</button>
-                            <div id="myModal" class="modal">
-                            	<div class="modal-content">
-                            		<span class="close">&times;</span>
-                            		<table id="demoTable"></table>
-                            		<p id="demoText"></p>
-                            	</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="/static/BitsLogo.png" alt="Logo" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <img src="/static/navbarIcon.png" alt="menüü" />
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Koduleht</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pood">Pood</a>
+                    </li>
+                    <li class="search-link">
+                        <a class="nav-link" href="#">Otsing</a>
+                    </li>
+                    <li class="search-bar">
+                        <form>
+                            <div>
+                                <input type="search" id="search" name="q"
+                                       placeholder="Otsi...">
+                                <button>Otsi</button>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/mypage">Minu kasutaja</a>
-                        </li>
-                        <li class="nav-item" th:if="${currentuser} == 'noBodyHome'">
-                            <div class="nav-item">
-                                <a id="login-button" class="nav-link" href="#">Logi sisse</a>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" onclick="loadDoc()" id="myBtn">Ostukorv</button>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <table id="demoTable"></table>
+                                <p id="demoText"></p>
                             </div>
-                        </li>
-                        <li class="nav-item" th:if="${currentuser} != 'noBodyHome'">
-                            <a id="Logout" class="nav-link" href="/logout">Logi välja</a>
-                        </li>
-                        <li class="nav-item" style="max-width:50px;">
-                            <a href="ee"><img src="/static/EST.png" style="max-width:250%;" alt="EST" /></a>
-                        </li>
-                        <li class="nav-item" style="max-width:50px;">
-                            <a href="/"><img src="/static/UK.png" style="max-width:250%;" alt="UK" /></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="popup-content">
-                <h2>Sisene kasutajaga või registreeri</h2>
-                <ul>
-                    <li>
-                        <a id="reallogin" class="nav-link" href="/login">Sisene</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mypage">Minu kasutaja</a>
+                    </li>
+                    <li class="nav-item" th:if="${currentuser} == 'noBodyHome'">
+                        <div class="nav-item">
+                            <a id="login-button" class="nav-link" href="#">Logi sisse</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" th:if="${currentuser} != 'noBodyHome'">
+                        <a id="Logout" class="nav-link" href="/logout">Logi välja</a>
+                    </li>
+                    <li class="nav-item" style="max-width:50px;">
+                        <a href="ee"><img src="/static/EST.png" style="max-width:250%;" alt="EST" /></a>
+                    </li>
+                    <li class="nav-item" style="max-width:50px;">
+                        <a href="/"><img src="/static/UK.png" style="max-width:250%;" alt="UK" /></a>
                     </li>
                 </ul>
-                
-                <div>
-                    <form class="form-horizontal" id="register" th:action="@{/register}" method="post">
-                        <div class="form-group">
-                            <button type="submit" id="bth-save">Pole kasutaja? Registeeri!
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div>
-                    <input id="modal-close-button" type="button" value="Sulge" />
-                </div>
             </div>
-        </nav>
-
-
-        <!--- Image Slider -->
-        <div id="slides" class="carousel slide" data-ride="carousel">
-            <ul class="carousel-indicators">
-                <li data-target="#slides" data-slide-to="0" class="active"></li>
-                <li data-target="#slides" data-slide-to="1"></li>
-                <li data-target="#slides" data-slide-to="2"></li>
+        </div>
+        <div id="popup-content">
+            <h2>Sisene kasutajaga või registreeri</h2>
+            <ul>
+                <li>
+                    <a id="reallogin" class="nav-link" href="/login">Sisene</a>
+                </li>
             </ul>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/static/kuradiuuspilt.jpg" alt="reklaam"/>
+
+            <div>
+                <form class="form-horizontal" id="register" th:action="@{/register}" method="post">
+                    <div class="form-group">
+                        <button type="submit" id="bth-save">
+                            Pole kasutaja? Registeeri!
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <input id="modal-close-button" type="button" value="Sulge" />
+            </div>
+        </div>
+    </nav>
+
+
+    <!--- Image Slider -->
+    <div id="slides" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+            <li data-target="#slides" data-slide-to="0" class="active"></li>
+            <li data-target="#slides" data-slide-to="1"></li>
+            <li data-target="#slides" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/kuradiuuspilt.jpg" alt="reklaam" />
+            </div>
+            <div class="carousel-item">
+                <img src="/static/Add2.1.jpg" alt="reklaam" />
+            </div>
+            <div class="carousel-item">
+                <img src="/static/Add3.1.jpg" alt="reklaam" />
+            </div>
+        </div>
+    </div>
+
+
+    <!--- Jumbotron -->
+    <!--- Welcome Section -->
+    <!--- Three Column Section -->
+    <!--- Two Column Section -->
+    <!--- Fixed background -->
+    <!--- Emoji Section -->
+    <!--- Meet the team -->
+    <!--- Cards -->
+    <!--- Two Column Section -->
+    <!--- Connect -->
+    <!--- Footer -->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="/static/BitsLogo.png" alt="Logo" />
+                    <hr class="light" />
+                    <p>+372 5555 5555</p>
+                    <p>email@bitsphones.com</p>
+                    <p>Liivi 2</p>
+                    <p>Tartu, Tartumaa, 00000</p>
                 </div>
-                <div class="carousel-item">
-                    <img src="/static/Add2.1.jpg" alt="reklaam"/>
+                <div class="col-md-4">
+                    <hr class="light" />
+                    <h5>Avatud</h5>
+                    <hr class="light" />
+                    <p>Esmaspäev - Reede: 10.00 - 19.00</p>
+                    <p>Laupäev - Pühapäev: 10.00 - 15.00</p>
                 </div>
-                <div class="carousel-item">
-                    <img src="/static/Add3.1.jpg" alt="reklaam"/>
+                <div class="col-md-4">
+                    <hr class="light" />
+                    <h5>Täpsem informatsioon</h5>
+                    <hr class="light" />
+                    <div id="map"></div>
+
+                </div>
+                <div class="col-12">
+                    <hr class="light-100" />
+                    <h5>&copy; bitsphones.com</h5>
+                    <div>
+                        <h4 th:text="'Total '+${usercount}+' users registred.'">usereid nii palju</h4>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-        <!--- Jumbotron -->
-        <!--- Welcome Section -->
-        <!--- Three Column Section -->
-        <!--- Two Column Section -->
-        <!--- Fixed background -->
-        <!--- Emoji Section -->
-        <!--- Meet the team -->
-        <!--- Cards -->
-        <!--- Two Column Section -->
-        <!--- Connect -->
-        <!--- Footer -->
-        <footer>
-            <div class="container-fluid padding">
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <img src="/static/BitsLogo.png" alt="Logo"/>
-                        <hr class="light" />
-                        <p>+372 5555 5555</p>
-                        <p>email@bitsphones.com</p>
-                        <p>Liivi 2</p>
-                        <p>Tartu, Tartumaa, 00000</p>
-                    </div>
-                    <div class="col-md-4">
-                        <hr class="light" />
-                        <h5>Avatud</h5>
-                        <hr class="light" />
-                        <p>Esmaspäev - Reede: 10.00 - 19.00</p>
-                        <p>Laupäev - Pühapäev: 10.00 - 15.00</p>
-                    </div>
-                    <div class="col-md-4">
-                        <hr class="light" />
-                        <h5>Täpsem informatsioon</h5>
-                        <hr class="light" />
-                        <div id="map"></div>
-
-                    </div>
-                    <div class="col-12">
-                        <hr class="light-100" />
-                        <h5>&copy; bitsphones.com</h5>
-                        <div><h4 th:text="'Total '+${usercount}+' users registred.'">usereid nii palju</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <script src="/static/js/HomePage.js"></script>
-        <!--<script src="/static/js/popup.js"></script>-->
-        <script>
-            window.addEventListener('load', function () {
-                var allimages = document.getElementsByTagName('img');
-                for (var i = 0; i < allimages.length; i++) {
-                    if (allimages[i].getAttribute('data-src')) {
-                        allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
-                    }
+    </footer>
+    <script src="/static/js/HomePage.js"></script>
+    <!--<script src="/static/js/popup.js"></script>-->
+    <script>
+        window.addEventListener('load', function () {
+            var allimages = document.getElementsByTagName('img');
+            for (var i = 0; i < allimages.length; i++) {
+                if (allimages[i].getAttribute('data-src')) {
+                    allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
                 }
-            }, false)
-        </script>
-        <script>
-            // Initialize and add the map
-            function initMap() {
-                var loc = { lat: 58.3782485, lng: 26.7073115 };
-                var map = new google.maps.Map(
-                    document.getElementById('map'), { zoom: 14, center: loc });
-                var marker = new google.maps.Marker({ position: loc, map: map });
             }
-        </script>
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxhiodRtf-8ZeeNnLNw0vgQkcGdTWB2U&callback=initMap">
-        </script>
-		<script>
-			var modal = document.getElementById('myModal');
-			var btn = document.getElementById("myBtn");
-			var span = document.getElementsByClassName("close")[0];
-			btn.onclick = function() {
-			    modal.style.display = "block";
-			}
-			span.onclick = function() {
-			    modal.style.display = "none";
-			}			
-			window.onclick = function(event) {
-			    if (event.target == modal) {
-			        modal.style.display = "none";
-			    }
-			}
-        </script>
-        <script>
-			function loadDoc() {
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-			    	if (this.readyState == 4 && this.status == 200) {
-			    		myFunction(this);
-			    	}
-			    	else{
-			    		document.getElementById("demoText").innerHTML = "Sinu ostukorv on tühi.";
-			    	}
-			  	};
-			  	xhttp.open("GET", "cart.xml", true);
-			  	xhttp.send();
-			}
-			function myFunction(xml) {
-			  	var i;
-			  	var xmlDoc = xml.responseXML;
-			  	var table="<tr><th>Toode</th><th>Hind</th><th>Kogus</th></tr>";
-			  	var x = xmlDoc.getElementsByTagName("PRODUCT");
-			  	if (x.length==0) {
-			  		document.getElementById("demoText").innerHTML = "Sinu ostukorv on tühi.";
-			  		return;
-			  	}
-			  	else{			  
-					for (i = 0; i <x.length; i++) { 
-				    	table += "<tr><td>" +
-					    x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
-					    "</td><td>" +
-					    x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue +
-					    "</td></tr>" +
-					    x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
-					    "</td></tr>";
-				  	}
-					document.getElementById("demoTable").innerHTML = table;
-			
-				}
-			}
-		</script>     
-    </body>
+        }, false)
+    </script>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            var loc = { lat: 58.3782485, lng: 26.7073115 };
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 14, center: loc });
+            var marker = new google.maps.Marker({ position: loc, map: map });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxhiodRtf-8ZeeNnLNw0vgQkcGdTWB2U&callback=initMap">
+    </script>
+    <script>
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+                else {
+                    document.getElementById("demoText").innerHTML = "Sinu ostukorv on tühi.";
+                }
+            };
+            xhttp.open("GET", "cart.xml", true);
+            xhttp.send();
+        }
+        function myFunction(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table = "<tr><th>Toode</th><th>Hind</th><th>Kogus</th></tr>";
+            var x = xmlDoc.getElementsByTagName("PRODUCT");
+            if (x.length == 0) {
+                document.getElementById("demoText").innerHTML = "Sinu ostukorv on tühi.";
+                return;
+            }
+            else {
+                for (i = 0; i < x.length; i++) {
+                    table += "<tr><td>" +
+                        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+                        "</td><td>" +
+                        x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue +
+                        "</td></tr>" +
+                        x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
+                        "</td></tr>";
+                }
+                document.getElementById("demoTable").innerHTML = table;
+
+            }
+        }
+    </script>
+</body>
 </html>
 
 

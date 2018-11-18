@@ -9,7 +9,6 @@ $date = mysqli_real_escape_string($conn, $_POST['date']);
 $IP = mysqli_real_escape_string($conn, $_POST['IP']);
 $Platform = mysqli_real_escape_string($conn, $_POST['Platform']);
 
-if (strlen($times) > 200000) {  $times = "";    }
 
 $sql = "INSERT INTO visitors (dateANDtime, IPaddress, platform)
 VALUES ('$date', '$IP', '$Platform')";
