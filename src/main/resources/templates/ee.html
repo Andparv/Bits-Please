@@ -59,7 +59,8 @@
                             <div id="myModal" class="modal">
                             	<div class="modal-content">
                             		<span class="close">&times;</span>
-                            		<table id="demo"></table>
+                            		<table id="demoTable"></table>
+                            		<p id="demoText"></p>
                             	</div>
                             </div>
                         </li>
@@ -220,7 +221,7 @@
 			    		myFunction(this);
 			    	}
 			    	else{
-			    		document.getElementById("demo").innerHTML = "Sinu ostukorv on tühi.";
+			    		document.getElementById("demoText").innerHTML = "Sinu ostukorv on tühi.";
 			    	}
 			  	};
 			  	xhttp.open("GET", "cart.xml", true);
@@ -232,7 +233,7 @@
 			  	var table="<tr><th>Toode</th><th>Hind</th><th>Kogus</th></tr>";
 			  	var x = xmlDoc.getElementsByTagName("PRODUCT");
 			  	if (x.length==0) {
-			  		document.getElementById("demo").innerHTML = "Sinu ostukorv on tühi.";
+			  		document.getElementById("demoText").innerHTML = "Sinu ostukorv on tühi.";
 			  		return;
 			  	}
 			  	else{			  
@@ -245,7 +246,7 @@
 					    x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
 					    "</td></tr>";
 				  	}
-					document.getElementById("demo").innerHTML = table;
+					document.getElementById("demoTable").innerHTML = table;
 			
 				}
 			}
