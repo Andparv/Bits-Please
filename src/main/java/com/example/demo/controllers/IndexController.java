@@ -48,7 +48,12 @@ public class IndexController {
         model.addAttribute("usercount", userRepository.countUsers());
         return "ee";
     }
-
+	
+	@RequestMapping("/cart", method = RequestMethod.GET)
+    public String cart(){
+        return "cart";
+    }
+	
     @GetMapping("/register")
     public String registerPrompt(Principal principal) {
         if (userService.getUser(principal) != null) {
