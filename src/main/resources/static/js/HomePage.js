@@ -55,17 +55,5 @@ $.getJSON('http://ipinfo.io', function (data) {
     console.log(data);
 });
 
-function saveUserTimes() {
-    $.post("külastajaAndmed.php",
-        {
-            date: new Date(),
-            IP: getUserIP,
-            Platform: navigator.platform,
-        },
-        function (data, status) {
-            document.getElementById("saveWarningText").innerHTML = data;
-            $("#saveWarningText").fadeIn(100);
-            setTimeout(function () { $("#saveWarningText").fadeOut(100); }, 3000);
-        });
-}
+
 

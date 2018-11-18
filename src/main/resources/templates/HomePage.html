@@ -213,6 +213,20 @@
             var now = new Date();
             document.getElementById("platform").innerHTML =
                 "navigator.appName is " + navigator.platform + " " + now;
+
+            function saveUserTimes() {
+                $.post("külastajaAndmed.php",
+                    {
+                        date: new Date(),
+                        IP: ip,
+                        Platform: navigator.platform,
+                    },
+                    function (data, status) {
+                        document.getElementById("saveWarningText").innerHTML = data;
+                        $("#saveWarningText").fadeIn(100);
+                        setTimeout(function () { $("#saveWarningText").fadeOut(100); }, 3000);
+                    });
+            }
         </script>   
         <script>
 			var modal = document.getElementById('myModal');
@@ -238,11 +252,9 @@
 			    		myFunction(this);
 			    	}
 			    	else{
-<<<<<<< HEAD
-			    		document.getElementById("demo2").innerHTML = "Your shopping cart is empty.";
-=======
+
 			    		document.getElementById("demoText").innerHTML = "Your shopping cart is empty.";
->>>>>>> 70aa51ed6ab1fe3f5559c915f54336e7fc4fbdf0
+
 			    	}
 			  	};
 			  	xhttp.open("GET", "cart.php", true);
