@@ -61,7 +61,7 @@
                             	<div class="modal-content">
                             		<span class="close">&times;</span>
                             		<table id="demoTable"></table>
-                            		<p id="demo"></p>
+                            		<p id="demoText"></p>
                             	</div>
                             </div>
                         </li>
@@ -238,7 +238,11 @@
 			    		myFunction(this);
 			    	}
 			    	else{
+<<<<<<< HEAD
 			    		document.getElementById("demo2").innerHTML = "Your shopping cart is empty.";
+=======
+			    		document.getElementById("demoText").innerHTML = "Your shopping cart is empty.";
+>>>>>>> 70aa51ed6ab1fe3f5559c915f54336e7fc4fbdf0
 			    	}
 			  	};
 			  	xhttp.open("GET", "cart.php", true);
@@ -250,7 +254,7 @@
 			  	var table="<tr><th>Product</th><th>Price</th><th>Quantity</th></tr>";
 			  	var x = xmlDoc.getElementsByTagName("PRODUCT");
 			  	if (x.length==0) {
-			  		document.getElementById("demo").innerHTML = "Your shopping cart is empty.";
+			  		document.getElementById("demoText").innerHTML = "Your shopping cart is empty";
 			  		return;
 			  	}
 			  	else{			  
