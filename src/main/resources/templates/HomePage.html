@@ -60,7 +60,6 @@
                             <div id="myModal" class="modal">
                             	<div class="modal-content">
                             		<span class="close">&times;</span>
-                            		<table id="demo"></table>
                             	</div>
                             </div>
                         </li>
@@ -235,6 +234,9 @@
 				xhttp.onreadystatechange = function() {
 			    	if (this.readyState == 4 && this.status == 200) {
 			    		myFunction(this);
+			    	}
+			    	else{
+			    		document.getElementById("demo").innerHTML = "Your shopping cart is empty.";
 			    	}
 			  	};
 			  	xhttp.open("GET", "cart.xml", true);
