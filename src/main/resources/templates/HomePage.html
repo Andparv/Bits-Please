@@ -59,11 +59,9 @@
                         </li>
                         <li class="search-bar">
                             <form>
-                                <div>
-                                    <input type="search" id="search" name="q"
-                                           placeholder="Search...">
-                                    <button>Search</button>
-                                </div>
+                                <input type="search" id="search" name="q"
+                                        placeholder="Search...">
+                                <button>Search</button>
                             </form>
                         </li>
                         <li class="nav-item">
@@ -103,7 +101,6 @@
                 </div>
             </div>
             <div id="popup-content">
-                <h1>Log in or register</h1>
                 <ul>
                     <li>
                         <a id="reallogin" class="nav-link" href="/login">Log in</a>
@@ -228,15 +225,11 @@
             function saveUserTimes() {
                 $.post("külastajaAndmed.php",
                     {
-                        date: 11111111,
-                        IP: 11122222,
-                        Platform: 111133333,
+                        date: new Date(),
+                        IP: ip,
+                        Platform: navigator.platform,
                     },
-                    function (data, status) {
-                        document.getElementById("saveWarningText").innerHTML = data;
-                        $("#saveWarningText").fadeIn(100);
-                        setTimeout(function () { $("#saveWarningText").fadeOut(100); }, 3000);
-                    });
+                   
             }
         </script>   
         <script>
