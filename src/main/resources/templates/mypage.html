@@ -1,27 +1,281 @@
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta charset="utf-8">
+    <meta name="description" content="BitsPhones best online phone store. BitsPhones gives you a chance to quickly and easily find the phone you want.">
+    <title>BitsPhones - Online Phone Store. Best new tech on the market</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/static/js/popup.js"></script>
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/popup.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/modal.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129380971-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-129380971-1');
+    </script>
+
+
+
+
+    <style>
+
+        .search-bar {
+            display: none;
+        }
+    </style>
+</head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="/static/BitsLogo.png" alt="Logo" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <img src="/static/navbarIcon.png" alt="navbarIcon" />
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="store">Store</a>
+                    </li>
+                    <li class="search-link">
+                        <a class="nav-link" href="#">Search</a>
+                    </li>
+                    <li class="search-bar">
+                        <form>
+                            <label for="search">Search</label>
+                            <input type="search" id="search" name="q"
+                                   placeholder="Search...">
+                            <button>Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" onclick="loadDoc()" id="myBtn">Cart</button>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <table id="demoTable"></table>
+                                <p id="demoText"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mypage">My account</a>
+                    </li>
 
-<div th:if="${message}">
-    <h2 th:text="${message}"/>
-</div>
+                    <li class="nav-item" th:if="${currentuser} == 'noBodyHome'">
+                        <div class="nav-item">
+                            <a id="login-button" class="nav-link" href="#">Log in</a>
+                        </div>
+                    </li>
 
-<div>
-    <h3>Upload your profile picture!</h3>
-    <form method="POST" enctype="multipart/form-data" action="/mypage">
-        <table>
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td><input type="submit" value="Upload" /></td></tr>
-        </table>
-    </form>
-</div>
-<div>
-    <ul>
-        <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}" />
-           <!-- <img src="/files/{filename:.+}"> -->
-        </li>
-    </ul>
-   <!-- <img th:if="${pictureName}" th:src="'/upload-dir/' + ${pictureName}"/>-->
-</div>
+
+                    <li class="nav-item" th:if="${currentuser} != 'noBodyHome'">
+                        <a id="Logout" class="nav-link" href="/logout">Log out</a>
+                    </li>
+
+                    <li class="nav-item" style="max-width:50px;">
+                        <a href="ee"><img src="/static/EST.png" style="max-width:250%;" alt="EST" /></a>
+                    </li>
+                    <li class="nav-item" style="max-width:50px;">
+                        <a href="/"><img src="/static/UK.png" style="max-width:250%;" alt="UK" /></a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <div id="popup-content">
+            <ul>
+                <li>
+                    <a id="reallogin" class="nav-link" href="/login">Log in</a>
+                </li>
+
+            </ul>
+            <div>
+                <form class="form-horizontal" id="register" th:action="@{/register}" method="post">
+                    <div class="form-group">
+                        <button type="submit" id="bth-save">
+                            Not a user? Sign up!
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <input id="modal-close-button" type="button" value="Close" />
+            </div>
+        </div>
+    </nav>
+
+    <div th:if="${message}">
+        <h2 th:text="${message}" />
+    </div>
+
+    <div>
+        <h3>Upload your profile picture!</h3>
+        <form method="POST" enctype="multipart/form-data" action="/mypage">
+            <table>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td><input type="submit" value="Upload" /></td></tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <ul>
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+                <!-- <img src="/files/{filename:.+}"> -->
+            </li>
+        </ul>
+        <!-- <img th:if="${pictureName}" th:src="'/upload-dir/' + ${pictureName}"/>-->
+    </div>
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="/static/BitsLogo.png" alt="Logo" />
+                    <hr class="light" />
+                    <p>+372 5555 5555</p>
+                    <p>bitsphonesplease@gmail.com</p>
+                    <p>Liivi 2</p>
+                    <p>Tartu, Tartumaa, 00000</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light" />
+                    <h5>Open hours</h5>
+                    <hr class="light" />
+                    <p>Monday - Friday: 10pm - 7pm</p>
+                    <p>Saturday - Sunday: 10pm - 3pm</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light" />
+                    <h5>Map</h5>
+                    <hr class="light" />
+                    <div id="map"></div>
+
+                </div>
+                <div class="col-12">
+                    <hr class="light-100" />
+                    <h5>&copy; bitsphones.com</h5>
+                    <span id="ip"></span>
+                    <p id="platform"></p>
+                    <div>
+                        <h4 th:text="'Total '+${usercount}+' users registred.'">usereid nii palju</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="/static/js/HomePage.js"></script>
+    <!--<script src="/static/js/popup.js"></script>-->
+    <script>
+        window.addEventListener('load', function () {
+            var allimages = document.getElementsByTagName('img');
+            for (var i = 0; i < allimages.length; i++) {
+                if (allimages[i].getAttribute('src')) {
+                    allimages[i].setAttribute('src', allimages[i].getAttribute('src'));
+                }
+            }
+        }, false)
+    </script>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            var loc = { lat: 58.3782485, lng: 26.7073115 };
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 14, center: loc });
+            var marker = new google.maps.Marker({ position: loc, map: map });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxhiodRtf-8ZeeNnLNw0vgQkcGdTWB2U&callback=initMap">
+    </script>
+
+    <script>
+        var now = new Date();
+        document.getElementById("platform").innerHTML =
+            "navigator.appName is " + navigator.platform + " " + now;
+
+        function saveUserTimes() {
+            $.post("külastajaAndmed.php",
+                {
+                    date: new Date(),
+                    IP: ip,
+                    Platform: navigator.platform,
+                },
+
+                }
+    </script>
+    <script>
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+                else {
+
+                    document.getElementById("demoText").innerHTML = "Your shopping cart is empty.";
+
+                }
+            };
+            xhttp.open("GET", "cart.php", true);
+            xhttp.send();
+        }
+        function myFunction(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table = "<tr><th>Product</th><th>Price</th><th>Quantity</th></tr>";
+            var x = xmlDoc.getElementsByTagName("PRODUCT");
+            if (x.length == 0) {
+                document.getElementById("demoText").innerHTML = "Your shopping cart is empty";
+                return;
+            }
+            else {
+                for (i = 0; i < x.length; i++) {
+                    table += "<tr><td>" +
+                        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+                        "</td><td>" +
+                        x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue +
+                        "</td></tr>" +
+                        x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
+                        "</td></tr>";
+                }
+                document.getElementById("demoTable").innerHTML = table;
+
+            }
+        }
+    </script>
 </body>
 </html>
