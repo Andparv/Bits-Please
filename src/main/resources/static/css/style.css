@@ -8,6 +8,10 @@ html, body {
     background-color: black;
 }
 
+.search-bar {
+    display: none;
+}
+
 .navbar {
     padding: .8rem;
     background-color: black;
