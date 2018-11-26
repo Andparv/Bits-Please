@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Picture {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     public Integer id;
 

@@ -2,11 +2,8 @@
 
 <body>
 
-<div th:if="${message}">
-    <h2 th:text="${message}"/>
-</div>
 
-<div>
+<div th:if = "${pictureName==null}">
     <h3>Upload your profile picture!</h3>
     <form method="POST" enctype="multipart/form-data" action="/mypage">
         <table>
@@ -16,13 +13,8 @@
     </form>
 </div>
 <div>
-    <ul>
-        <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}" />
-           <!-- <img src="/files/{filename:.+}"> -->
-        </li>
-    </ul>
-   <!-- <img th:if="${pictureName}" th:src="'/upload-dir/' + ${pictureName}"/>-->
+    <h3>Väga ilus pilt!</h3>
+   <img th:if="${pictureName}" th:src="'/files/'+${pictureName}"/>
 </div>
 </body>
 </html>
