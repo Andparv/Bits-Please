@@ -57,3 +57,89 @@ $.getJSON('http://ipinfo.io', function (data) {
 
 
 
+window.addEventListener('load', function () {
+    var allimages = document.getElementsByTagName('img');
+    for (var i = 0; i < allimages.length; i++) {
+        if (allimages[i].getAttribute('src')) {
+            allimages[i].setAttribute('src', allimages[i].getAttribute('src'));
+        }
+    }
+}, false)
+
+var now = new Date();
+document.getElementById("platform").innerHTML =
+    "navigator.appName is " + navigator.platform + " " + now;
+
+function saveUserTimes() {
+    $.post("külastajaAndmed.php",
+        {
+            date: new Date(),
+            IP: ip,
+            Platform: navigator.platform,
+        },
+                   
+            }
+
+var modal = document.getElementById('myModal');
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+span.onclick = function () {
+    modal.style.display = "none";
+}
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+
+    
+
+
+
+    
+    function loadDoc() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+    }
+			    else{
+
+        document.getElementById("demoText").innerHTML = "Your shopping cart is empty.";
+
+    }
+    };
+    xhttp.open("GET", "cart.php", true);
+    xhttp.send();
+}
+		function myFunction(xml) {
+			var i;
+    var xmlDoc = xml.responseXML;
+			var table="<tr><th>Product</th><th>Price</th><th>Quantity</th></tr>";
+    var x = xmlDoc.getElementsByTagName("PRODUCT");
+			if (x.length==0) {
+        document.getElementById("demoText").innerHTML = "Your shopping cart is empty";
+    return;
+}
+			else{			  
+				for (i = 0; i <x.length; i++) {
+        table += "<tr><td>" +
+        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+        "</td><td>" +
+        x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue +
+        "</td></tr>" +
+        x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
+        "</td></tr>";
+				}
+document.getElementById("demoTable").innerHTML = table;
+	
+}
+}
+
+
+

@@ -1,35 +1,31 @@
 ﻿<!DOCTYPE html>
 <html lang="ee" xmlns:th="http://www.w3.org/1999/xhtml">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BitsPhones</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="/static/js/popup.js"></script>
-    <link href="/static/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/popup.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129380971-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BitsPhones</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/static/js/HomePage.js"></script>
+<script src="/static/js/popup.js"></script>
+<link href="/static/css/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+<link rel="stylesheet" type="text/css" href="/static/css/popup.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129380971-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-        gtag('config', 'UA-129380971-1');
-    </script>
+    gtag('config', 'UA-129380971-1');
+</script>
 
-<style>
 
-    .search-bar {
-        display: none;
-    }
-</style>
 
 </head>
 <body>
@@ -183,18 +179,8 @@
             </div>
         </div>
     </footer>
-    <script src="/static/js/HomePage.js"></script>
-    <!--<script src="/static/js/popup.js"></script>-->
-    <script>
-        window.addEventListener('load', function () {
-            var allimages = document.getElementsByTagName('img');
-            for (var i = 0; i < allimages.length; i++) {
-                if (allimages[i].getAttribute('data-src')) {
-                    allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
-                }
-            }
-        }, false)
-    </script>
+
+
     <script>
         // Initialize and add the map
         function initMap() {
@@ -207,60 +193,7 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxhiodRtf-8ZeeNnLNw0vgQkcGdTWB2U&callback=initMap">
     </script>
-    <script>
-        var modal = document.getElementById('myModal');
-        var btn = document.getElementById("myBtn");
-        var span = document.getElementsByClassName("close")[0];
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-    <script>
-        function loadDoc() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    myFunction(this);
-                }
-                else {
-                    document.getElementById("demoText").innerHTML = "Sinu ostukorv on tühi.";
-                }
-            };
-            xhttp.open("GET", "cart.xml", true);
-            xhttp.send();
-        }
-        function myFunction(xml) {
-            var i;
-            var xmlDoc = xml.responseXML;
-            var table = "<tr><th>Toode</th><th>Hind</th><th>Kogus</th></tr>";
-            var x = xmlDoc.getElementsByTagName("PRODUCT");
-            if (x.length == 0) {
-                document.getElementById("demoText").innerHTML = "Sinu ostukorv on tühi.";
-                return;
-            }
-            else {
-                for (i = 0; i < x.length; i++) {
-                    table += "<tr><td>" +
-                        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
-                        "</td><td>" +
-                        x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue +
-                        "</td></tr>" +
-                        x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
-                        "</td></tr>";
-                }
-                document.getElementById("demoTable").innerHTML = table;
 
-            }
-        }
-    </script>
 </body>
 </html>
 
