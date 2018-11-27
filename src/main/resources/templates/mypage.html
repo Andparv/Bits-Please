@@ -3,7 +3,7 @@
 <body>
 
 
-<div th:if = "${pictureName==null}">
+<div th:if = "${pictureName == null}">
     <h3>Upload your profile picture!</h3>
     <form method="POST" enctype="multipart/form-data" action="/mypage">
         <table>
@@ -12,9 +12,9 @@
         </table>
     </form>
 </div>
-<div>
-    <h3>Väga ilus pilt!</h3>
-   <img th:if="${pictureName}" th:src="'/files/'+${pictureName}"/>
+<div th:if ="${pictureName != null}">
+    <h3>Good choice!</h3>
+    <img th:if="${pictureName}" th:src="'/files/'+${pictureName}"/>
 </div>
 </body>
 </html>
