@@ -17,42 +17,170 @@
     </script>
 </head>
 <body>
-<div id="pood"></div>
+    <nav class="navbar navbar-expand-md sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="/static/BitsLogo.png" alt="Logo" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <img src="/static/navbarIcon.png" alt="menüü" />
+            </button>
 
-<div th:if="${not #lists.isEmpty(phoneList)}">
-    <h2>Pood</h2>
-    <div class="product-article-container">
-        <ol class="oi-list oi-grid-products">
-            <tr th:each="phone:${phoneList}">
-            <li class="oi-item">
-                <div class="oi-product-thumb">
-                    <p class="image">
-                        <a href="/buyPhone/">
-                            <img th:src="@{'/static/' + ${phone.id} + '.png'}"
-                                 th:title="${phone.id}"
-                                 th:alt="${phone.id}"
-                                 width="165" height="165"
-                                 alt="Phone">
-                        </a>
-                    </p>
-                    <h3 class="name">
-                        <a href="/buyPhone/{id}">
-                            <span>
-                                <td th:text="${phone.model}"></td>
-                            </span>
-                        </a>
-                    </h3>
-                    <p class="productID"><td th:text="'Kood: '+${phone.id}"></td>
-                    </p>
-                    <div class="oi-product-bottom">
-                        <p class="price"><td th:text="'Hind: '+${phone.price}">€</td></p>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Koduleht</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pood">Pood</a>
+                    </li>
+                    <li class="search-link">
+                        <a class="nav-link" href="#">Otsing</a>
+                    </li>
+                    <li class="search-bar">
+                        <form>
+                            <div>
+                                <label for="search">Search</label>
+                                <input type="search" id="search" name="q"
+                                       placeholder="Otsi...">
+                                <button>Otsi</button>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" onclick="loadDoc()" id="myBtn">Ostukorv</button>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <table id="demoTable"></table>
+                                <p id="demoText"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mypage">Minu kasutaja</a>
+                    </li>
+                    <li class="nav-item" th:if="${currentuser} == 'noBodyHome'">
+                        <div class="nav-item">
+                            <a id="login-button" class="nav-link" href="#">Logi sisse</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" th:if="${currentuser} != 'noBodyHome'">
+                        <a id="Logout" class="nav-link" href="/logout">Logi välja</a>
+                    </li>
+                    <li class="nav-item" style="max-width:50px;">
+                        <a href="ee"><img src="/static/EST.png" style="max-width:250%;" alt="EST" /></a>
+                    </li>
+                    <li class="nav-item" style="max-width:50px;">
+                        <a href="/"><img src="/static/UK.png" style="max-width:250%;" alt="UK" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="popup-content">
+            <ul>
+                <li>
+                    <a id="reallogin" class="nav-link" href="/login">Sisene</a>
+                </li>
+            </ul>
+
+            <div>
+                <form class="form-horizontal" id="register" th:action="@{/register}" method="post">
+                    <div class="form-group">
+                        <button type="submit" id="bth-save">
+                            Pole kasutaja? Registeeri!
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <input id="modal-close-button" type="button" value="Sulge" />
+            </div>
+        </div>
+    </nav>
+    <div class="grid" id="store">
+        <div class="grid__col--md-3"></div>
+        <div class="grid__col--md-9">
+            <div th:if="${not #lists.isEmpty(phoneList)}">
+                <h2>Store</h2>
+                <div class="product-article-container">
+                    <ol class="oi-list oi-grid-products">
+                        <li class="oi-item" th:each="phone:${phoneList}">
+                            <div class="oi-product-thumb">
+                                <p class="image">
+                                    <a href="/buyPhone/">
+                                        <img th:src="@{'/static/' + ${phone.id} + '.png'}"
+                                             th:title="${phone.id}"
+                                             th:alt="${phone.id}"
+                                             width="165" height="165">
+                                    </a>
+                                </p>
+                                <h3 class="name">
+                                    <a href="/buyPhone/{id}">
+                                        <span th:text="${phone.model}">
+
+                                        </span>
+                                    </a>
+                                </h3>
+                                <p class="productID" th:text="${phone.model}">
+                                </p>
+                                <div class="oi-product-bottom">
+                                    <p class="price" td th:text="'Price: '+${phone.price} + '€'"></p>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--- Footer -->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="/static/BitsLogo.png" alt="Logo" />
+                    <hr class="light" />
+                    <p>+372 5555 5555</p>
+                    <p>email@bitsphones.com</p>
+                    <p>Liivi 2</p>
+                    <p>Tartu, Tartumaa, 00000</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light" />
+                    <h5>Avatud</h5>
+                    <hr class="light" />
+                    <p>Esmaspäev - Reede: 10.00 - 19.00</p>
+                    <p>Laupäev - Pühapäev: 10.00 - 15.00</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light" />
+                    <h5>Täpsem informatsioon</h5>
+                    <hr class="light" />
+                    <div id="map"></div>
+
+                </div>
+                <div class="col-12">
+                    <hr class="light-100" />
+                    <h5>&copy; bitsphones.com</h5>
+                    <div>
+                        <h4 th:text="'Total '+${usercount}+' users registred.'">usereid nii palju</h4>
                     </div>
                 </div>
-            </li>
-            </tr>
-        </ol>
-    </div>
-</div>
-<br/>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            var loc = { lat: 58.3782485, lng: 26.7073115 };
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 14, center: loc });
+            var marker = new google.maps.Marker({ position: loc, map: map });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxhiodRtf-8ZeeNnLNw0vgQkcGdTWB2U&callback=initMap">
+    </script>
 </body>
 </html>
