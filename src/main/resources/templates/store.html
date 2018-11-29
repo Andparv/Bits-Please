@@ -1,53 +1,199 @@
 ﻿<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>Store</title>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129380971-1"></script>
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/popup.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/modal.css">
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'UA-129380971-1');
+        gtag('config', 'UA-129380971-1');
     </script>
 </head>
 <body>
-<div id="store"></div>
 
-<div th:if="${not #lists.isEmpty(phoneList)}">
-    <h2>Store</h2>
-    <div class="product-article-container">
-        <ol class="oi-list oi-grid-products">
-            <li class="oi-item" th:each="phone:${phoneList}">
-                <div class="oi-product-thumb">
-                    <p class="image">
-                        <a href="/buyPhone/">
-                            <img th:src="@{'/static/' + ${phone.id} + '.png'}"
-                                 th:title="${phone.id}"
-                                 th:alt="${phone.id}"
-                                 width="165" height="165">
-                        </a>
-                    </p>
-                    <h3 class="name">
-                        <a href="/buyPhone/{id}">
-                            <span th:text="${phone.model}">
-          
-                            </span>
-                        </a>
-                    </h3>
-                    <p class="productID" th:text="${phone.model}">
-                    </p>
-                    <div class="oi-product-bottom">
-                        <p class="price" td th:text="'Price: '+${phone.price} + '€'"></p>
+    <nav class="navbar navbar-expand-md sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="/static/BitsLogo.png" alt="Logo" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <img src="/static/navbarIcon.png" alt="navbarIcon" />
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="store">Store</a>
+                    </li>
+                    <li class="search-link">
+                        <a class="nav-link" href="#">Search</a>
+                    </li>
+                    <li class="search-bar">
+                        <form>
+                            <label for="search">Search</label>
+                            <input type="search" id="search" name="q"
+                                   placeholder="Search...">
+                            <button>Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" onclick="loadDoc()" id="myBtn">Cart</button>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <table id="demoTable"></table>
+                                <p id="demoText"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mypage">My account</a>
+                    </li>
+
+                    <li class="nav-item" th:if="${currentuser} == 'noBodyHome'">
+                        <div class="nav-item">
+                            <a id="login-button" class="nav-link" href="#">Log in</a>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item" th:if="${currentuser} != 'noBodyHome'">
+                        <a id="Logout" class="nav-link" href="/logout">Log out</a>
+                    </li>
+
+                    <li class="nav-item" style="max-width:50px;">
+                        <a href="ee"><img src="/static/EST.png" style="max-width:250%;" alt="EST" /></a>
+                    </li>
+                    <li class="nav-item" style="max-width:50px;">
+                        <a href="/"><img src="/static/UK.png" style="max-width:250%;" alt="UK" /></a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <div id="popup-content">
+            <ul>
+                <li>
+                    <a id="reallogin" class="nav-link" href="/login">Log in</a>
+                </li>
+
+            </ul>
+            <div>
+                <form class="form-horizontal" id="register" th:action="@{/register}" method="post">
+                    <div class="form-group">
+                        <button type="submit" id="bth-save">
+                            Not a user? Sign up!
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <input id="modal-close-button" type="button" value="Close" />
+            </div>
+        </div>
+    </nav>
+    <div class="grid" id="store">
+        <div class="grid__col--md-3"></div>
+        <div class="grid__col--md-9">
+        <div th:if="${not #lists.isEmpty(phoneList)}">
+            <h2>Store</h2>
+            <div class="product-article-container">
+                <ol class="oi-list oi-grid-products">
+                    <li class="oi-item" th:each="phone:${phoneList}">
+                        <div class="oi-product-thumb">
+                            <p class="image">
+                                <a href="/buyPhone/">
+                                    <img th:src="@{'/static/' + ${phone.id} + '.png'}"
+                                         th:title="${phone.id}"
+                                         th:alt="${phone.id}"
+                                         width="165" height="165">
+                                </a>
+                            </p>
+                            <h3 class="name">
+                                <a href="/buyPhone/{id}">
+                                    <span th:text="${phone.model}">
+
+                                    </span>
+                                </a>
+                            </h3>
+                            <p class="productID" th:text="${phone.model}">
+                            </p>
+                            <div class="oi-product-bottom">
+                                <p class="price" td th:text="'Price: '+${phone.price} + '€'"></p>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+            </div>
+    </div>
+
+    
+
+    <!--- Footer -->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="/static/BitsLogo.png" alt="Logo" />
+                    <hr class="light" />
+                    <p>+372 5555 5555</p>
+                    <p>bitsphonesplease@gmail.com</p>
+                    <p>Liivi 2</p>
+                    <p>Tartu, Tartumaa, 00000</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light" />
+                    <h5>Open hours</h5>
+                    <hr class="light" />
+                    <p>Monday - Friday: 10pm - 7pm</p>
+                    <p>Saturday - Sunday: 10pm - 3pm</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light" />
+                    <h5>Map</h5>
+                    <hr class="light" />
+                    <div id="map"></div>
+
+                </div>
+                <div class="col-12">
+                    <hr class="light-100" />
+                    <h5>&copy; bitsphones.com</h5>
+                    <span id="ip"></span>
+                    <p id="platform"></p>
+                    <div>
+                        <h4 th:text="'Total '+${usercount}+' users registred.'">usereid nii palju</h4>
                     </div>
                 </div>
-            </li>
-        </ol>
-    </div>
-</div>
-<br/>
+            </div>
+        </div>
+
+    </footer>
+    <script>
+        function initMap() {
+            var loc = { lat: 58.3782485, lng: 26.7073115 };
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 14, center: loc });
+            var marker = new google.maps.Marker({ position: loc, map: map });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxhiodRtf-8ZeeNnLNw0vgQkcGdTWB2U&callback=initMap">
+    </script>
+    <br />
 </body>
 </html>
