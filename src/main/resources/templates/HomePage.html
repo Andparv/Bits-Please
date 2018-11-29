@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="utf-8">
     <meta name="description" content="BitsPhones best online phone store. BitsPhones gives you a chance to quickly and easily find the phone you want.">
     <title>BitsPhones - Online Phone Store. Best new tech on the market</title>
@@ -69,14 +69,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/mypage">My account</a>
                         </li>
-
                         <li class="nav-item" th:if="${currentuser} == 'noBodyHome'">
                             <div class="nav-item">
                                 <a id="login-button" class="nav-link" href="#">Log in</a>
                             </div>
                         </li>
-
-
                         <li class="nav-item" th:if="${currentuser} != 'noBodyHome'">
                             <a id="Logout" class="nav-link" href="/logout">Log out</a>
                         </li>

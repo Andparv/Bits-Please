@@ -28,8 +28,7 @@ public class UserService {
 
         String email = (String) info.get("email");
 
-        User user = userRepository.findByEmail(email);
-        return user;
+        return userRepository.findByEmail(email);
     }
 
     public User getUser(String email){

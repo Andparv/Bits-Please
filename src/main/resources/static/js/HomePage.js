@@ -4,18 +4,21 @@ $('.search-link').on('click', function () {
     $('.search-bar').show()
     setTimeout(closeSearch, 5000)
 });
+
 function closeSearch() {
-    
+
     $('.search-bar').hide()
     $('.search-link').show()
 }
+
 function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
     //compatibility for firefox and chrome
     var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
     var pc = new myPeerConnection({
-        iceServers: []
-    }),
-        noop = function () { },
+            iceServers: []
+        }),
+        noop = function () {
+        },
         localIPs = {},
         ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
         key;
@@ -56,7 +59,6 @@ $.getJSON('http://ipinfo.io', function (data) {
 });
 
 
-
 window.addEventListener('load', function () {
     var allimages = document.getElementsByTagName('img');
     for (var i = 0; i < allimages.length; i++) {
@@ -69,16 +71,6 @@ window.addEventListener('load', function () {
 var now = new Date();
 document.getElementById("platform").innerHTML =
     "navigator.appName is " + navigator.platform + " " + now;
-
-function saveUserTimes() {
-    $.post("külastajaAndmed.php",
-        {
-            date: new Date(),
-            IP: ip,
-            Platform: navigator.platform,
-        },
-                   
-            }
 
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn");
@@ -96,49 +88,44 @@ window.onclick = function (event) {
 }
 
 
+function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this);
+        }
+        else {
 
-    
+            document.getElementById("demoText").innerHTML = "Your shopping cart is empty.";
 
-
-
-    
-    function loadDoc() {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-        myFunction(this);
-    }
-			    else{
-
-        document.getElementById("demoText").innerHTML = "Your shopping cart is empty.";
-
-    }
+        }
     };
     xhttp.open("GET", "cart.php", true);
     xhttp.send();
 }
-		function myFunction(xml) {
-			var i;
+
+function myFunction(xml) {
+    var i;
     var xmlDoc = xml.responseXML;
-			var table="<tr><th>Product</th><th>Price</th><th>Quantity</th></tr>";
+    var table = "<tr><th>Product</th><th>Price</th><th>Quantity</th></tr>";
     var x = xmlDoc.getElementsByTagName("PRODUCT");
-			if (x.length==0) {
+    if (x.length == 0) {
         document.getElementById("demoText").innerHTML = "Your shopping cart is empty";
-    return;
-}
-			else{			  
-				for (i = 0; i <x.length; i++) {
-        table += "<tr><td>" +
-        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
-        "</td><td>" +
-        x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue +
-        "</td></tr>" +
-        x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
-        "</td></tr>";
-				}
-document.getElementById("demoTable").innerHTML = table;
-	
-}
+        return;
+    }
+    else {
+        for (i = 0; i < x.length; i++) {
+            table += "<tr><td>" +
+                x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue +
+                "</td></tr>" +
+                x[i].getElementsByTagName("QUANTITY")[0].childNodes[0].nodeValue +
+                "</td></tr>";
+        }
+        document.getElementById("demoTable").innerHTML = table;
+
+    }
 }
 
 
