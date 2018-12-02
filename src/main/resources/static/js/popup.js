@@ -9,6 +9,7 @@ $(document).ready(function(){
 		console.log('$("#modal-close-button").click');
 		closePopup();
 	});
+
 	$("#overlay-bg").click(function(e) {
 		console.log('$("#overlay-bg").click');
 		closePopup();
@@ -17,6 +18,7 @@ $(document).ready(function(){
 		updatePopup();
 	});
 });
+
 function openPopup(){
 	$("#login-button").prop("disabled", true);
 	$("#popup-content").fadeIn();
@@ -43,3 +45,4 @@ function updatePopup(){
 		'left' : left
 	});
 }
+

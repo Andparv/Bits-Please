@@ -12,6 +12,7 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="/static/js/HomePage.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/smartIdAuth.js"></script>
     <link href="/static/css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
@@ -84,8 +85,6 @@
                         <li class="nav-item" style="max-width:50px;">
                             <a href="/"><img src="/static/UK.png" style="max-width:250%;" alt="UK" /></a>
                         </li>
-
-
                     </ul>
                 </div>
             </div>
@@ -94,7 +93,6 @@
                     <li>
                         <a id="reallogin" class="nav-link" href="/login">Log in</a>
                     </li>
-
                 </ul>
                 <div>
                     <form class="form-horizontal" id="register" th:action="@{/register}" method="post">
@@ -105,6 +103,29 @@
                         </div>
                     </form>
                 </div>
+                <div>
+                    <!--src="/static/smartidnupp.png"-->
+                    <form>
+                    <p>Sign in with smart-ID:</p>
+                    <div>
+                        <label for="countryCode">Nationality</label>
+                        <input type="text" id="countryCode" name="countryCode" placeholder="EE">
+                    </div>
+                    <div>
+                        <label for="nationalIdentityNumber">Id code:</label>
+                        <input type="text" id="nationalIdentityNumber" name="nationalIdentityNumber">
+                    </div>
+                        <button type="submit" id="smartLogin">Sign in</button>
+                    </form>
+                    <div><h1 id="main-text"></h1></div>
+                    <div id="smart-id-verification-code-container" style="display:none;">
+                        <div class="checkCodeBlock" >
+                            <h1 class="checkCodeBlock" th:text="#{login.SubmitButton}"></h1>
+                            <h1 class="checkCodeBlock" id="verification-code-text">XXXX</h1>
+                        </div>
+                    </div>
+                </div>
+
                 <div>
                     <input id="modal-close-button" type="button" value="Close" />
                 </div>

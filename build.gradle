@@ -45,4 +45,7 @@ dependencies {
 	compile 'org.springframework:spring-context-support'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
+	compile("ee.sk.smartid:smart-id-java-client:1.0")
+	compile("org.glassfish.jersey.inject:jersey-hk2:2.26")
+
 }
