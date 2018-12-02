@@ -13,7 +13,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                /*.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
                 .and()
@@ -21,22 +21,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
                 .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/", "/static/**", "/store", "/login**", "/error**", "/ee", "/pood","/smartIdLogin").permitAll()
+                .antMatchers("/", "/static/**", "/store", "/login**", "/error**", "/ee", "/pood","/smart-Id/login").permitAll()
                 .anyRequest()
                 .authenticated();
-                */
-                .authorizeRequests()
-                .antMatchers("/", "/static/**", "/store", "/login**", "/error**", "/ee", "/pood","/smart-Id/login").permitAll()
-                .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")
-                .permitAll()
-                .and()
-                .formLogin().loginPage("/smart-Id/login")
-                .and()
-                .csrf()
-                .disable()
-                ;
 
     }
 }
