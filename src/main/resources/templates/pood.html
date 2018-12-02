@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="ee" xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <meta charset="UTF-8">
@@ -120,7 +119,7 @@
                                     </a>
                                 </p>
                                 <h3 class="name">
-                                    <a href="/buyPhone/{id}">
+                                    <a href="/buyPhone/id">
                                         <span th:text="${phone.model}">
 
                                         </span>
@@ -129,7 +128,7 @@
                                 <p class="productID" th:text="${phone.model}">
                                 </p>
                                 <div class="oi-product-bottom">
-                                    <p class="price" td th:text="'Price: '+${phone.price} + '€'"></p>
+                                    <p class="price" th:text="'Price: '+${phone.price} + '€'"></p>
                                 </div>
                             </div>
                         </li>

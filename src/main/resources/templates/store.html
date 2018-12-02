@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:th="http://www.thymeleaf.org">
+     
 <head>
     <meta charset="UTF-8">
     <title>Store</title>
@@ -123,7 +123,7 @@
                                 </a>
                             </p>
                             <h3 class="name">
-                                <a href="/buyPhone/{id}">
+                                <a href="/buyPhone/id">
                                     <span th:text="${phone.model}">
 
                                     </span>
@@ -132,7 +132,7 @@
                             <p class="productID" th:text="${phone.model}">
                             </p>
                             <div class="oi-product-bottom">
-                                <p class="price" td th:text="'Price: '+${phone.price} + '€'"></p>
+                                <p class="price" th:text="'Price: '+${phone.price} + '€'"></p>
                             </div>
                         </div>
                     </li>
@@ -194,6 +194,6 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxhiodRtf-8ZeeNnLNw0vgQkcGdTWB2U&callback=initMap">
     </script>
-    <br />
+    
 </body>
 </html>
