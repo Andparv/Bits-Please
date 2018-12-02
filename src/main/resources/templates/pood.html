@@ -105,7 +105,7 @@
         <div class="grid__col--md-3"></div>
         <div class="grid__col--md-9">
             <div th:if="${not #lists.isEmpty(phoneList)}">
-                <h2>Store</h2>
+                <h2>Pood</h2>
                 <div class="product-article-container">
                     <ol class="oi-list oi-grid-products">
                         <li class="oi-item" th:each="phone:${phoneList}">
@@ -125,10 +125,8 @@
                                         </span>
                                     </a>
                                 </h3>
-                                <p class="productID" th:text="${phone.model}">
-                                </p>
                                 <div class="oi-product-bottom">
-                                    <p class="price" th:text="'Price: '+${phone.price} + '€'"></p>
+                                    <p class="price" th:text="'Hind: '+${phone.price} + ' €'"></p>
                                 </div>
                             </div>
                         </li>
