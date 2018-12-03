@@ -13,17 +13,19 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true)
-                .and()
-                .csrf()
-                .disable()
-                .antMatcher("/**")
+
                 .authorizeRequests()
                 .antMatchers("/", "/static/**", "/store", "/login**", "/error**", "/ee", "/pood","/smart-Id/login").permitAll()
-                .anyRequest()
-                .authenticated();
+                .antMatchers("/mypage").authenticated()
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+                .permitAll()
+                .and()
+                .formLogin().loginPage("/smart-Id/login")
+                .and()
+                .csrf()
+                .disable();
 
     }
 }
