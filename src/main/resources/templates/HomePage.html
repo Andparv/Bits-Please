@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/base.css">
     <link rel="stylesheet" type="text/css" href="/static/css/popup.css">
     <link rel="stylesheet" type="text/css" href="/static/css/modal.css">
+    
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129380971-1"></script>
     <script>
@@ -46,26 +47,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="store">Store</a>
                         </li>
-                        <li class="search-link">
-                            <a class="nav-link" href="#">Search</a>
-                        </li>
+                       
                         <li class="search-bar">
-                            <form>
+                            <form id="search">
                                 <label for="search">Search</label>
-                                <input type="search" id="search" name="q"
-                                       placeholder="Search...">
-                                <button>Search</button>
+                                <input name="q" type="text" size="40" placeholder="Search...">
                             </form>
                         </li>
                         <li class="nav-item">
-                            <button type="button" onclick="loadDoc()" id="myBtn">Cart</button>
-                            <div id="myModal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <table id="demoTable"></table>
-                                    <p id="demoText"></p>
-                                </div>
-                            </div>
+                            <a class="nav-link" href="cart">Cart</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/mypage">My account</a>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -39,22 +39,13 @@
                         <a class="nav-link" href="#">Search</a>
                     </li>
                     <li class="search-bar">
-                        <form>
+                        <form id="search">
                             <label for="search">Search</label>
-                            <input type="search" id="search" name="q"
-                                   placeholder="Search...">
-                            <button>Search</button>
+                            <input name="q" type="text" size="40" placeholder="Search...">
                         </form>
                     </li>
                     <li class="nav-item">
-                        <button type="button" onclick="loadDoc()" id="myBtn">Cart</button>
-                        <div id="myModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <table id="demoTable"></table>
-                                <p id="demoText"></p>
-                            </div>
-                        </div>
+                        <a class="nav-link" href="cart">Cart</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/mypage">My account</a>
