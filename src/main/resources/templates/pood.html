@@ -101,15 +101,10 @@
             </div>
         </div>
     </nav>
-    <div class="grid" id="store">
-        <div class="grid__col--md-3"></div>
-        <div class="grid__col--md-9">
+        <div class="parent" id="store">
             <div th:if="${not #lists.isEmpty(phoneList)}">
                 <h2>Pood</h2>
-                <div class="product-article-container">
-                    <ol class="oi-list oi-grid-products">
-                        <li class="oi-item" th:each="phone:${phoneList}">
-                            <div class="oi-product-thumb">
+                        <li class='child inline-block-child' th:each="phone:${phoneList}">
                                 <p class="image">
                                     <a href="/buyPhone/">
                                         <img th:src="@{'/static/' + ${phone.id} + '.png'}"
@@ -120,21 +115,17 @@
                                 </p>
                                 <h3 class="name">
                                     <a href="/buyPhone/id">
-                                        <span th:text="${phone.model}">
-
-                                        </span>
+                                        <span th:text="${phone.model}"></span>
                                     </a>
                                 </h3>
                                 <div class="oi-product-bottom">
                                     <p class="price" th:text="'Hind: '+${phone.price} + ' €'"></p>
                                 </div>
+                            <div class="oi-product-bottom" th:if="${phone.amount<5}">
+                                <p class="amount" th:text="'Ainult '+${phone.amount} + ' tükki veel alles!'"></p>
                             </div>
                         </li>
-                    </ol>
-                </div>
             </div>
-        </div>
-    </div>
     <!--- Footer -->
     <footer>
         <div class="container-fluid padding">
