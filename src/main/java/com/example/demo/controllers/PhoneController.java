@@ -8,10 +8,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PhoneController {
@@ -39,7 +38,8 @@ public class PhoneController {
         return "pood";
     }
 
-    @RequestMapping(value = "/buyPhone/{id}", method = RequestMethod.GET)
+
+  /*  @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String getBootById(Model model, @PathVariable("id") Long id){
         Optional<Phone> phone = phoneRepository.findById(id);
         if (phone.isPresent()){
@@ -49,6 +49,8 @@ public class PhoneController {
             model.addAttribute("phone", new Phone());
         }
         return "phone";
-    }
+    }*/
+
+
 
 }
