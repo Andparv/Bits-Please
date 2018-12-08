@@ -1,4 +1,14 @@
 // JavaScript source code
+$(document).ready(function(){
+    console.log("JQUERY IS READY!");
+
+    $("#addit").click(function() {
+        console.log('$("#addit").click');
+        additem();
+    });
+
+});
+
 $('.search-link').on('click', function () {
     $(this).hide()
     $('.search-bar').show()
@@ -125,5 +135,24 @@ function myFunction(xml) {
         }
         document.getElementById("demoTable").innerHTML = table;
 
+    }
+}
+function additem() {
+    $("#addit").click(function (e) {
+        var id = $("#id").val();
+        var model = $("#model").val();
+        var amount = $("#amount").val();
+        var price = $("#price").val();
+        var data = {
+            'id': id,
+            'model': model,
+            'amount': amount,
+            'price': price
+        };
+        $.post("/cart", data, showDone);
+    });
+    var showDone = function () {
+        texttoshow = "!FGJDGJODFLASFAKFPWKFPAPMVLMV";
+        document.getElementById("thetext").innerHTML = texttoshow;
     }
 }
