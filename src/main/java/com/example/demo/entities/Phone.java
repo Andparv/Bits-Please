@@ -22,6 +22,13 @@ public class Phone {
     @Column(name = "price")
     public double price;
 
+    @Column(name = "amount")
+    public int amount;
+
+    public int getAmount() { return amount; }
+
+    public void setAmount(int amount) { this.amount = amount; }
+
     public String getImageAadress() {
         return imageAadress;
     }

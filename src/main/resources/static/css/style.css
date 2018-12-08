@@ -141,6 +141,9 @@ figure {
 * {
     box-sizing: border-box;
 }
+.inline-block-child {
+    display: inline-block;
+}
 
 
 /*
