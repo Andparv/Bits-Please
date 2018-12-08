@@ -21,4 +21,5 @@ public class PhoneService {
         phoneRepository.findAll().forEach(phoneList::add);
         return phoneList;
     }
+
 }

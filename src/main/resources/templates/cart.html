@@ -98,11 +98,14 @@
         </div>
     </div>
 </nav>
-<div th:if>
+<div th:if="${#lists.isEmpty(cartList)}">
+<h2>Nothing in your basket yet!</h2>
+</div>
 <div class="parent" id="cart">
-    <div th:if="${not #lists.isEmpty(phoneList)}">
-        <h2>Store</h2>
-        <div class='child inline-block-child' th:each="phone:${phoneList}">
+    <div th:if="${not #lists.isEmpty(cartList)}">
+        <h2>Cart</h2>
+        <div class='child inline-block-child' th:each="phone:${cartList}">
+            <p id="thetext"></p>
             <p class="image">
                 <a>
                     <img th:src="@{'/static/' + ${phone.id} + '.png'}"
@@ -118,7 +121,7 @@
                 <p class="price" th:text="'Price: '+${phone.price} + '€'"></p>
             </div>
             <div class="oi-product-bottom" th:if="${phone.amount<5}">
-                <p class="amount" th:text="'Only '+${phone.amount} + ' pieces left in stock!'"></p>
+                <p class="amount" th:text="'Added to basket: '+${phone.amount}"></p>
             </div>
         </div>
     </div>

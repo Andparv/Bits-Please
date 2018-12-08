@@ -38,9 +38,23 @@ public class PhoneController {
         return "pood";
     }
 
+   /*@RequestMapping(value = "/cart/add", method = RequestMethod.POST)
+    public Phone findPhone(Model model){*/
+        /*Phone phone = phoneRepository.findById(id);
+        model.addAttribute(phone);
+        return phone;*/
+     /*   Phone phone = phoneRepository.findById(1);
+        model.addAttribute(phone);
+     return phone;
+    }*/
 
-  /*  @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public String getBootById(Model model, @PathVariable("id") Long id){
+    @RequestMapping(value="/cart", method = RequestMethod.GET)
+    public String cartList(Model model){
+        model.addAttribute("cartList", phoneService.listAll());
+        return "cart";
+    }
+
+   /* public String getBootById(Model model, @PathVariable("id") Long id){
         Optional<Phone> phone = phoneRepository.findById(id);
         if (phone.isPresent()){
             model.addAttribute("phone", phone.get());
