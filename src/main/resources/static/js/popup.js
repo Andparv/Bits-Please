@@ -17,7 +17,9 @@ $(document).ready(function(){
 	$(window).resize(function(){
 		updatePopup();
 	});
+
 });
+
 
 function openPopup(){
 	$("#login-button").prop("disabled", true);

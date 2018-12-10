@@ -156,3 +156,4 @@ function additem() {
         document.getElementById("thetext").innerHTML = texttoshow;
     }
 }
+
