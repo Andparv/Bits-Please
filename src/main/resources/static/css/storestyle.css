@@ -1,0 +1,37 @@
+#phoneObject {
+    margin-left: 100px;
+    border: 1px solid #b98847;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #b98847;
+    width: 200px;
+    padding-left: 14px;
+    padding-bottom: 10px;
+}
+#phoneImg {
+    border: 1px solid #b98847;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #b98847;
+    width: 150px;
+}
+#store {
+    background-color: black;
+}
+.getstarted-button {
+    border-radius: 30px;
+    background-color: black;
+    border-color: #b98847;
+    color: #b98847;
+    padding: 5%;
+}
+.cta {
+        margin-left: 16%;
+        font-family: 'Poppins';
+}
+.phoneInfo {
+    color: #b98847;
+    padding-left: 12%;
+    font-family: 'Poppins';
+    padding-right: 10%;
+}

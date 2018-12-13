@@ -1,25 +1,5 @@
 // JavaScript source code
-$(document).ready(function(){
-    console.log("JQUERY IS READY!");
 
-    $("#addit").click(function() {
-        console.log('$("#addit").click');
-        additem();
-    });
-
-});
-
-$('.search-link').on('click', function () {
-    $(this).hide()
-    $('.search-bar').show()
-    setTimeout(closeSearch, 5000)
-});
-
-function closeSearch() {
-
-    $('.search-bar').hide()
-    $('.search-link').show()
-}
 
 function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
     //compatibility for firefox and chrome
@@ -79,9 +59,7 @@ window.addEventListener('load', function () {
 }, false)
 
 var now = new Date();
-document.getElementById("platform").innerHTML =
-    "navigator.appName is " + navigator.platform + " " + now;
-
+document.getElementById("platform").innerHTML = "navigator.appName is " + navigator.platform + " " + now;
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
@@ -135,24 +113,5 @@ function myFunction(xml) {
         }
         document.getElementById("demoTable").innerHTML = table;
 
-    }
-}
-function additem() {
-    $("#addit").click(function (e) {
-        var id = $("#id").val();
-        var model = $("#model").val();
-        var amount = $("#amount").val();
-        var price = $("#price").val();
-        var data = {
-            'id': id,
-            'model': model,
-            'amount': amount,
-            'price': price
-        };
-        $.post("/cart", data, showDone);
-    });
-    var showDone = function () {
-        texttoshow = "!FGJDGJODFLASFAKFPWKFPAPMVLMV";
-        document.getElementById("thetext").innerHTML = texttoshow;
     }
 }
