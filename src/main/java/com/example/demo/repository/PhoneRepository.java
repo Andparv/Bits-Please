@@ -11,4 +11,6 @@ public interface PhoneRepository extends CrudRepository<Phone,Long>{
 
     @Query(nativeQuery = true, value = "SELECT * FROM phone WHERE id=:id")
     Phone findById(@Param("id") int id);
+
+
 }

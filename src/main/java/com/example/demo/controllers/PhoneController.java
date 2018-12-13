@@ -50,9 +50,10 @@ public class PhoneController {
 
     @RequestMapping(value="/cart", method = RequestMethod.GET)
     public String cartList(Model model){
-        model.addAttribute("cartList", phoneService.listAll());
+        model.addAttribute("cartList", phoneService.listCartAll());
         return "cart";
     }
+
 
    /* public String getBootById(Model model, @PathVariable("id") Long id){
         Optional<Phone> phone = phoneRepository.findById(id);

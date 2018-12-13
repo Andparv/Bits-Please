@@ -21,5 +21,10 @@ public class PhoneService {
         phoneRepository.findAll().forEach(phoneList::add);
         return phoneList;
     }
+    public List<Phone> listCartAll(){
+        List<Phone> phonesInCartList = new ArrayList<>();
+
+        return phonesInCartList;
+    }
 
 }
