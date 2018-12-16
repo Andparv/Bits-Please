@@ -7,13 +7,15 @@
     <title>BitsPhones Store - Find a phone that is just for you.</title>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
     <link href="/static/css/style.css" rel="stylesheet">
-    <script src="/static/js/Cart.js"></script>
+
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/static/css/base.css">
     <link rel="stylesheet" type="text/css" href="/static/css/popup.css">
     <link rel="stylesheet" type="text/css" href="/static/css/modal.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/storestyle.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129380971-1"></script>
+    <script src="/static/js/Cart.js" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -38,7 +40,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="pood">Pood</a>
                     </li>
-                    
+
                     <li class="search-bar">
                         <form id="search">
                             <label for="search">Otsing</label>
@@ -89,31 +91,58 @@
             </div>
         </div>
     </nav>
+    <section class="container content-section">
+        <h2 class="section-header">Pood</h2>
         <div class="parent" id="store">
             <div th:if="${not #lists.isEmpty(phoneList)}">
-                <h2>Pood</h2>
-                        <li class='child inline-block-child' th:each="phone:${phoneList}">
-                                <p class="image">
-                                    <a href="/buyPhone/">
-                                        <img th:src="@{'/static/' + ${phone.id} + '.png'}"
-                                             th:title="${phone.id}"
-                                             th:alt="${phone.id}"
-                                             width="165" height="165">
-                                    </a>
-                                </p>
-                                <h3 class="name">
-                                    <a href="/buyPhone/id">
-                                        <span th:text="${phone.model}"></span>
-                                    </a>
-                                </h3>
-                                <div class="oi-product-bottom">
-                                    <p class="price" th:text="'Hind: '+${phone.price} + ' €'"></p>
-                                </div>
-                            <div class="oi-product-bottom" th:if="${phone.amount<5}">
-                                <p class="amount" th:text="'Ainult '+${phone.amount} + ' tükki veel alles!'"></p>
+                <ul>
+                    <li class='child inline-block-child' id="phoneObject" th:each="phone:${phoneList}">
+                        <p class="image">
+                            <a>
+                                <img id="phoneImg" th:src="@{'/static/' + ${phone.id} + '.png'}"
+                                     th:title="${phone.id}"
+                                     th:alt="${phone.id}"
+                                     width="165" height="165">
+                            </a>
+                        </p>
+                        <div class="phoneInfo">
+                            <h1 class="phoneTitle">
+                                <span th:text="${phone.model}"></span>
+                            </h1>
+
+                            <div class="oi-product-bottom">
+                                <p class="price" th:text="'Hind: '+${phone.price} + '€'"></p>
                             </div>
-                        </li>
+                            <div class="oi-product-bottom" th:if="${phone.amount<5}">
+                                <p class="amount" th:text="'Ainult '+${phone.amount} + ' veel laos!'"></p>
+                            </div>
+                        </div>
+                        <div class="cta">
+                            <button class="getstarted-button" th:id="'addit'+${phone.id}">Lisa ostukorvi!</button>
+                        </div>
+
+                    </li>
+                </ul>
             </div>
+        </div>
+    </section>
+    <section class="container content-section">
+        <h2 class="section-header">Ostukorv</h2>
+        <div class="parent">
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">Toode</span>
+                <span class="cart-price cart-header cart-column">Hind</span>
+                <span class="cart-quantity cart-header cart-column">KOGUS</span>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">SUMMA</strong>
+                <span class="cart-total-price">0€</span>
+            </div>
+            <button class="btn btn-primary btn-purchase" type="button">OSTA</button>
+        </div>
+    </section>
     <!--- Footer -->
     <footer>
         <div class="container-fluid padding">

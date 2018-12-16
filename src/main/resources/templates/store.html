@@ -13,7 +13,7 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="/static/js/HomePage.js"></script>
     <script src="/static/js/popup.js"></script>
-    <script src="/static/js/Cart.js"></script>
+    <script src="/static/js/Cart.js" async></script>
     <script src="/static/js/smartIdAuth.js"></script>
     <link href="/static/css/style.css" rel="stylesheet">
 
@@ -105,47 +105,60 @@
             </div>
         </div>
     </nav>
-    <div class="parent" id="store">
-        <div th:if="${not #lists.isEmpty(phoneList)}">
-            <h2>Store</h2>
-            <ul>
-            <li class='child inline-block-child' id="phoneObject" th:each="phone:${phoneList}">
-                <div class="form-group">
-                    <!--<form action="/cart" method="GET">-->
-                    <input id="amount" type="hidden" name="amount" value="1" />
-                    <input id="id" type="hidden" name="id" th:value="${phone.id}" />
-                    <input id="model" type="hidden" name="model" th:value="${phone.model}" />
 
-                    <!--</form>-->
-                </div>
-                <p class="image">
-                    <a>
-                        <img id="phoneImg" th:src="@{'/static/' + ${phone.id} + '.png'}"
-                             th:title="${phone.id}"
-                             th:alt="${phone.id}"
-                             width="165" height="165">
-                    </a>
-                </p>
-                <div class="phoneInfo">
-                    <h1>
-                        <span th:text="${phone.model}"></span>
-                    </h1>
+    <section class="container content-section">
+        <h2 class="section-header">Store</h2>
+        <div class="parent" id="store">
+            <div th:if="${not #lists.isEmpty(phoneList)}">
+                <ul>
+                    <li class='child inline-block-child' id="phoneObject" th:each="phone:${phoneList}">
+                        <p class="image">
+                            <a>
+                                <img id="phoneImg" th:src="@{'/static/' + ${phone.id} + '.png'}"
+                                     th:title="${phone.id}"
+                                     th:alt="${phone.id}"
+                                     width="165" height="165">
+                            </a>
+                        </p>
+                        <div class="phoneInfo">
+                            <h1 class="phoneTitle">
+                                <span th:text="${phone.model}"></span>
+                            </h1>
 
-                    <div class="oi-product-bottom">
-                        <p class="price" th:text="'Price: '+${phone.price} + '€'"></p>
-                    </div>
-                    <div class="oi-product-bottom" th:if="${phone.amount<5}">
-                        <p class="amount" th:text="'Only '+${phone.amount} + ' pieces left in stock!'"></p>
-                    </div>
-                </div>
-                    <div class="cta">
-                        <button class="getstarted-button addButton" th:id="'addit'+${phone.id}">Add to Cart!</button>
-                    </div>
-                
-            </li>
-               </ul>
+                            <div class="oi-product-bottom">
+                                <p class="price" th:text="'Price: '+${phone.price} + '€'"></p>
+                            </div>
+                            <div class="oi-product-bottom" th:if="${phone.amount<5}">
+                                <p class="amount" th:text="'Only '+${phone.amount} + ' pieces left in stock!'"></p>
+                            </div>
+                        </div>
+                        <div class="cta">
+                            <button class="getstarted-button" th:id="'addit'+${phone.id}">Add to Cart!</button>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </section>
+    <section class="container content-section">
+        <h2 class="section-header">CART</h2>
+        <div class="parent">
+        <div class="cart-row">
+            <span class="cart-item cart-header cart-column">ITEM</span>
+            <span class="cart-price cart-header cart-column">PRICE</span>
+            <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+        </div>
+        <div class="cart-items">
+        </div>
+        <div class="cart-total">
+            <strong class="cart-total-title">Total</strong>
+            <span class="cart-total-price">0€</span>
+        </div>
+        <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+        </div>
+    </section>
+
 
     <!--- Footer -->
     <footer>
