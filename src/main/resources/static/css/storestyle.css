@@ -9,8 +9,9 @@
 }
 
 
-#phoneObject {
-    margin-left: 100px;
+.phoneObject {
+    margin-left: 20px;
+    margin-right: 20px;
     border: 1px solid #b98847;
     border-radius: 10px;
     border-width: 2px;
@@ -21,7 +22,7 @@
     text-align: center;
    
 }
-#phoneImg {
+.phoneImg {
     border: 1px solid #b98847;
     border-radius: 10px;
     border-width: 2px;
@@ -29,6 +30,7 @@
     width: 150px;
 }
 .parent {
+        text-align: center;
         background-color: black;
         border: 1px solid #b98847;
         border-radius: 10px;
