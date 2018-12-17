@@ -55,9 +55,7 @@
                                 <input name="q" type="text" size="40" placeholder="Search...">
                             </form>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cart">Cart</a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="/mypage">My account</a>
                         </li>
@@ -88,7 +86,7 @@
                 <div>
                     <form class="form-horizontal" id="register" th:action="@{/register}" method="post">
                         <div class="form-group">
-                            <button type="submit" id="bth-save">
+                            <button class="button" type="submit" id="bth-save">
                                 Not a user? Sign up!
                             </button>
                         </div>
@@ -96,17 +94,17 @@
                 </div>
                 <div>
                     <!--src="/static/smartidnupp.png"-->
-                    <form>
+                    <form class="login-form">
                     <p>Sign in with smart-ID:</p>
                     <div>
                         <label for="countryCode">Nationality</label>
-                        <input type="text" id="countryCode" name="countryCode" placeholder="EE">
+                        <input class="smartLogin" type="text" id="countryCode" name="countryCode" placeholder="EE">
                     </div>
                     <div>
                         <label for="nationalIdentityNumber">Id code:</label>
-                        <input type="text" id="nationalIdentityNumber" name="nationalIdentityNumber">
+                        <input class="smartLogin" type="text" id="nationalIdentityNumber" name="nationalIdentityNumber">
                     </div>
-                        <button type="submit" id="smartLogin">Sign in</button>
+                        <button class="button" type="submit" id="smartLogin">Sign in</button>
                     </form>
                     <div><h1 id="main-text"></h1></div>
                     <div id="smart-id-verification-code-container" style="display:none;">
@@ -118,7 +116,7 @@
                 </div>
 
                 <div>
-                    <input id="modal-close-button" type="button" value="Close" />
+                    <input class="button" id="modal-close-button" type="button" value="Close" />
                 </div>
             </div>
         </nav>

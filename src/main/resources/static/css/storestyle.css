@@ -43,7 +43,15 @@
     border-color: #b98847;
     color: #b98847;
     padding: 5%;
+    cursor: pointer;
+
+   
 }
+    .getstarted-button:hover {
+        color: black;
+        background-color: #b98847;
+        border-color: black;
+    }
 .cta {
 
         font-family: 'Poppins';
@@ -111,7 +119,8 @@
 }
 
     .btn-danger:hover {
-        background-color: #CC4C4C;
+        background-color: #ba0000;
+        color: black;
     }
 
 .cart-quantity-input {
@@ -158,6 +167,11 @@
     margin: 40px auto 80px auto;
     font-size: 1.75em;
 }
+    .btn-purchase:hover {
+        color: black;
+        background-color: #b98847;
+        border-color: black;
+    }
 .section-header {
     font-family: "Poppins";
     font-weight: normal;
