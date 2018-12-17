@@ -166,8 +166,9 @@
     font-size: 2.5em;
     margin-bottom: 30px;
 }
-.container{
+.container {
     background-color: black;
+    margin-bottom: 30px;
 }
 .btn-primary {
     border-radius: 30px;

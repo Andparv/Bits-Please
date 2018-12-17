@@ -1,4 +1,10 @@
-$(document).ready(function () {
+if (document.readyState == 'loading') {
+    document.addEventListener('DOMContentLoaded', ready)
+} else {
+    ready()
+}
+
+function ready() {
     console.log("Store");
 
 
@@ -11,7 +17,7 @@ $(document).ready(function () {
     }
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 
-});
+}
 
 
 
@@ -20,11 +26,22 @@ function addToCartClicked(event) {
     console.log("clicked")
     var button = event.target
     var shopItem = button.parentElement.parentElement
+    
     var title = shopItem.getElementsByClassName('phoneTitle')[0].innerText
-    var pricetext = shopItem.getElementsByClassName('price')[0].innerText.replace('Price: ', '')
-    pricetext.replace('€', '')
-    var price = parseFloat(pricetext)
-    addItemToCart(title, price)
+    console.log((shopItem.getElementsByClassName('price')[0].innerText.indexOf("Price: ")))
+    if (shopItem.getElementsByClassName('price')[0].innerText.indexOf("Price: ") > -1) {
+        var pricetext = shopItem.getElementsByClassName('price')[0].innerText.replace('Price: ', '')
+        pricetext.replace('€', '')
+        var price = parseFloat(pricetext)
+        var keel = "Inglise"
+    }
+    else {
+        var pricetext = shopItem.getElementsByClassName('price')[0].innerText.replace('Hind: ', '')
+        pricetext.replace('€', '')
+        var price = parseFloat(pricetext)
+        var keel = "Eesti"
+    }
+    addItemToCart(title, price, keel)
 
 
     console.log(title, price)
@@ -41,7 +58,7 @@ function quantityChanged(event) {
     }
     updateCartTotal()
 }
-function addItemToCart(title, price) {
+function addItemToCart(title, price, keel) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
     var cartItems = document.getElementsByClassName('cart-items')[0]
@@ -52,17 +69,28 @@ function addItemToCart(title, price) {
             return
         }
     }
+    if(keel == "Inglise"){var cartRowContents = `
+                                  <div class="cart-item cart-column">
 
-    var cartRowContents = `
-        <div class="cart-item cart-column">
-           
-            <span class="cart-item-title">${title}</span>
-        </div>
-        <span class="cart-price cart-column">${price}</span>
-        <div class="cart-quantity cart-column">
-            <input class="cart-quantity-input" type="number" value="1">
-            <button class="btn btn-danger" type="button">REMOVE</button>
-        </div>`
+                                      <span class="cart-item-title">${title}</span>
+                                  </div>
+                                  <span class="cart-price cart-column">${price}€</span>
+                                  <div class="cart-quantity cart-column">
+                                      <input class="cart-quantity-input" type="number" value="1">
+                                      <button class="btn btn-danger" type="button">REMOVE</button>
+                                  </div>`}
+                                  else {
+                                  var cartRowContents = `
+                                          <div class="cart-item cart-column">
+
+                                              <span class="cart-item-title">${title}</span>
+                                          </div>
+                                          <span class="cart-price cart-column">${price}€</span>
+                                          <div class="cart-quantity cart-column">
+                                              <input class="cart-quantity-input" type="number" value="1">
+                                              <button class="btn btn-danger" type="button">EEMALDA</button>
+                                          </div>`}
+
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     updateCartTotal()
