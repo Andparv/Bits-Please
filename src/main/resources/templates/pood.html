@@ -94,7 +94,7 @@
         <div class="parent" id="store">
             <div th:if="${not #lists.isEmpty(phoneList)}">
                 <ul>
-                    <li class='child inline-block-child' class="phoneObject" th:each="phone:${phoneList}">
+                    <li class='child inline-block-child phoneObject' th:each="phone:${phoneList}">
                         <p class="image">
                             <a>
                                 <img class="phoneImg" th:src="@{'/static/' + ${phone.id} + '.png'}"
