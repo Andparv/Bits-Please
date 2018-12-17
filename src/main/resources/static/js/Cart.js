@@ -115,6 +115,8 @@ function updateCartTotal() {
 
 function purchaseClicked() {
     alert('Thank you for your purchase')
+    var amount = document.getElementsByClassName('amount')[0].innerText
+    console.log(amount)
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild)
